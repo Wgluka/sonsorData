@@ -69,6 +69,9 @@ function optionFactory(res) {
         yAxis_data = [{
             type: 'value',
             name: res.unit0name,
+            scale: true,
+            min: 'dataMin' - 10,
+            max: 'dataMax' + 10,
             axisLabel: {
                 formatter: '{value} ' + res.unit0abbr
             }
@@ -92,7 +95,7 @@ function optionFactory(res) {
                         normal: {
                             lineStyle: {
                                 width: 1,
-                                type:'dotted',
+                                type:'solid',
                                 shadowColor : 'rgba(255,165,0,0.6)',
                                 shadowBlur: 1000
                             }
@@ -119,12 +122,18 @@ function optionFactory(res) {
         yAxis_data = [{
             type: 'value',
             name: res.unit0name,
+            scale: true,
+            min: 'dataMin' - 10,
+            max: 'dataMax' + 10,
             axisLabel: {
                 formatter: '{value} ' + res.unit0abbr
             }
         }, {
             type: 'value',
             name: res.unit1name,
+            scale: true,
+            min: 'dataMin' - 10,
+            max: 'dataMax' + 10,
             axisLabel: {
                 formatter: '{value} ' + res.unit1abbr
             }
@@ -159,7 +168,7 @@ function optionFactory(res) {
                             lineStyle: {
                                 width: 2,
                                 color: 'red',
-                                type:'dotted',
+                                type:'solid',
                                 shadowColor : 'rgba(255,165,0,0.6)',
                                 shadowBlur: 1000
                             }
@@ -187,7 +196,7 @@ function optionFactory(res) {
                             lineStyle: {
                                 width: 2,
                                 color: '#30e0e0',
-                                type:'dotted',
+                                type:'solid',
                                 shadowColor : 'rgba(255,165,0,0.6)',
                                 shadowBlur: 1000
                             }
@@ -216,18 +225,27 @@ function optionFactory(res) {
         yAxis_data = [{
             type: 'value',
             name: res.unit1name,
+            scale: true,
+            min: 'dataMin' - 10,
+            max: 'dataMax' + 10,
             axisLabel: {
                 formatter: '{value} ' + res.unit1abbr
             }
         }, {
             type: 'value',
             name: res.unit0name,
+            scale: true,
+            min: 'dataMin' - 10,
+            max: 'dataMax' + 10,
             axisLabel: {
                 formatter: '{value} ' + res.unit0abbr
             }
         }, {
             type: 'value',
             name: res.unit2name,
+            scale: true,
+            min: 'dataMin' - 10,
+            max: 'dataMax' + 10,
             axisLabel: {
                 formatter: '{value} ' + res.unit2abbr
             }
@@ -266,7 +284,7 @@ function optionFactory(res) {
                             color: 'red',
                             lineStyle: {        // 系列级个性化折线样式
                                 width: 2,
-                                type: 'dashed'
+                                type: 'solid'
                             }
                         }
                     },
@@ -292,7 +310,7 @@ function optionFactory(res) {
                             lineStyle: {
                                 width: 2,
                                 color: '#ff6347',
-                                type:'dotted',
+                                type:'solid',
                                 shadowColor : 'rgba(255,165,0,0.6)',
                                 shadowBlur: 1000
                             }
@@ -322,7 +340,7 @@ function optionFactory(res) {
                             lineStyle: {
                                 width: 2,
                                 color: '#30e0e0',
-                                type:'dotted',
+                                type:'solid',
                                 shadowColor : 'rgba(255,165,0,0.6)',
                                 shadowBlur: 1000
                             }
@@ -351,24 +369,36 @@ function optionFactory(res) {
         yAxis_data = [{
             type: 'value',
             name: res.unit0name,
+            scale: true,
+            min: 'dataMin' - 10,
+            max: 'dataMax' + 10,
             axisLabel: {
                 formatter: '{value} ' + res.unit0abbr
             }
         }, {
             type: 'value',
             name: res.unit1name,
+            scale: true,
+            min: 'dataMin' - 10,
+            max: 'dataMax' + 10,
             axisLabel: {
                 formatter: '{value} ' + res.unit1abbr
             }
         }, {
             type: 'value',
             name: res.unit2name,
+            scale: true,
+            min: 'dataMin' - 10,
+            max: 'dataMax' + 10,
             axisLabel: {
                 formatter: '{value} ' + res.unit2abbr
             }
         }, {
             type: 'value',
             name: res.unit3name,
+            scale: true,
+            min: 'dataMin' - 10,
+            max: 'dataMax' + 10,
             axisLabel: {
                 formatter: '{value} ' + res.unit3abbr
             }
@@ -467,7 +497,10 @@ function defaultOption() {
             }
         ],
         yAxis: [{
-            type: 'value'
+            type: 'value',
+            scale: true,
+            min: 'dataMin' - 10,
+            max: 'dataMax' + 10
         }],
         series: [{
             name: '-',

@@ -191,8 +191,8 @@
 */
 .button-primary,
 .button-primary-flat {
-  background-color: #1B9AF7;
-  border-color: #1B9AF7;
+  background-color: #8ef787;
+  border-color: #8ef787;
   color: #FFF; }
   .button-primary:visited,
   .button-primary-flat:visited {
@@ -665,7 +665,7 @@
   /**
   * bryan edit
   */
-  font-weight: bold;
+  /*font-weight: bold;*/
   font-size: 150%;
 }
   .button-borderless:hover, .button-borderless:focus {
@@ -1490,7 +1490,7 @@
   font-size: 12px;
   height: 30px;
   line-height: 30px;
-  padding: 0 30px; }
+  padding: 0 10px; }
 
 .button-tiny {
   font-size: 9.6px;
