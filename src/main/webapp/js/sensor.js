@@ -23,7 +23,7 @@ function doAjaxdemo() {
             var datefield = $('#datefield').datebox('getValue');
             var dategap = $('#dategap').val();
             var sensorno = $('#sensorno').val();
-           // console.info('sensorno:' + sensorno + ',datefield:' + datefield + ',dategap=' + dategap);
+            // console.info('sensorno:' + sensorno + ',datefield:' + datefield + ',dategap=' + dategap);
             if (datefield == '' || dategap == '') {
                 alert('有输入项为空！');
                 return;
@@ -66,16 +66,8 @@ function optionFactory(res) {
     var series_data = [];
     if (metaSum == '1') {
         legend_data = {"data": res.unit0name};
-        yAxis_data = [{
-            type: 'value',
-            name: res.unit0name,
-            scale: true,
-            min: 'dataMin' - 10,
-            max: 'dataMax' + 10,
-            axisLabel: {
-                formatter: '{value} ' + res.unit0abbr
-            }
-        }];
+
+        var result0;
         if (dataSum == 0) {
             series_data = [
                 {
@@ -84,19 +76,19 @@ function optionFactory(res) {
                     data: '-'
                 }];
         } else {
-            var result0 = res.result0.split(",");
+            result0 = res.result0.split(",");
             series_data = [
                 {
                     name: res.unit0name,
                     type: 'line',
-                    symbol:'emptyCircle',
-                    symbolSize:1,
+                    symbol: 'emptyCircle',
+                    symbolSize: 1,
                     itemStyle: {
                         normal: {
                             lineStyle: {
                                 width: 1,
-                                type:'solid',
-                                shadowColor : 'rgba(255,165,0,0.6)',
+                                type: 'solid',
+                                shadowColor: 'rgba(255,165,0,0.6)',
                                 shadowBlur: 1000
                             }
                         }
@@ -117,29 +109,36 @@ function optionFactory(res) {
                 }];
         }
 
-    } else if (metaSum == '2') {
-        legend_data = {"data": [res.unit0name, res.unit1name]};
+        var min0 = 0;
+        var max0 = 0;
+
+        if (result0) {
+            max0 = findMax(result0);
+            min0 = findMin(result0);
+
+            //max0 = Math.max(result0);
+            //min0 = Math.min(result0);
+            //min0 = result0.min();
+            //min0 = min(result0);
+            //max0 = max(result0);
+        }
+
         yAxis_data = [{
             type: 'value',
             name: res.unit0name,
             scale: true,
-            min: 'dataMin' - 10,
-            max: 'dataMax' + 10,
+            min: min0,
+            max: max0,
             axisLabel: {
                 formatter: '{value} ' + res.unit0abbr
             }
-        }, {
-            type: 'value',
-            name: res.unit1name,
-            scale: true,
-            min: 'dataMin' - 10,
-            max: 'dataMax' + 10,
-            axisLabel: {
-                formatter: '{value} ' + res.unit1abbr
-            }
+        }];
 
-        }
-        ];
+    } else if (metaSum == '2') {
+        legend_data = {"data": [res.unit0name, res.unit1name]};
+
+        var result0;
+        var result1;
         if (dataSum == 0) {
             series_data = [
                 {
@@ -155,21 +154,21 @@ function optionFactory(res) {
             ];
         } else {
 
-            var result0 = res.result0.split(",");
-            var result1 = res.result1.split(",");
+            result0 = res.result0.split(",");
+            result1 = res.result1.split(",");
             series_data = [
                 {
                     name: res.unit0name,
                     type: 'line',
-                    symbol:'emptyCircle',
-                    symbolSize:1,
+                    symbol: 'emptyCircle',
+                    symbolSize: 1,
                     itemStyle: {
                         normal: {
                             lineStyle: {
-                                width: 2,
+                                width: 1,
                                 color: 'red',
-                                type:'solid',
-                                shadowColor : 'rgba(255,165,0,0.6)',
+                                type: 'solid',
+                                shadowColor: 'rgba(255,165,0,0.6)',
                                 shadowBlur: 1000
                             }
                         }
@@ -189,15 +188,15 @@ function optionFactory(res) {
                 }, {
                     name: res.unit1name,
                     type: 'line',
-                    symbol:'emptyCircle',
-                    symbolSize:1,
+                    symbol: 'emptyCircle',
+                    symbolSize: 1,
                     itemStyle: {
                         normal: {
                             lineStyle: {
-                                width: 2,
+                                width: 1,
                                 color: '#30e0e0',
-                                type:'solid',
-                                shadowColor : 'rgba(255,165,0,0.6)',
+                                type: 'solid',
+                                shadowColor: 'rgba(255,165,0,0.6)',
                                 shadowBlur: 1000
                             }
                         }
@@ -220,37 +219,58 @@ function optionFactory(res) {
             ];
         }
 
-    } else if (metaSum == '3') {
-        legend_data = {"data": [res.unit1name, res.unit0name, res.unit2name]};
+        var min0 = 0;
+        var max0 = 0;
+        var max1 = 0;
+        var min1 = 0;
+
+        if (result0) {
+            min0 = findMin(result0);
+            max0 = findMax(result0);
+            //min0 = min(result0);
+            //max0 = max(result0);
+        }
+
+        if (result1) {
+            min1 = findMin(result1);
+            max1 = findMax(result1);
+            //min1 = min(result1);
+            //max1 = max(result1);
+        }
+
         yAxis_data = [{
-            type: 'value',
-            name: res.unit1name,
-            scale: true,
-            min: 'dataMin' - 10,
-            max: 'dataMax' + 10,
-            axisLabel: {
-                formatter: '{value} ' + res.unit1abbr
-            }
-        }, {
             type: 'value',
             name: res.unit0name,
             scale: true,
-            min: 'dataMin' - 10,
-            max: 'dataMax' + 10,
+            min: min0,
+            max: max0,
+            //min: 'dataMin' - 10,
+            //max: 'dataMax' + 10,
             axisLabel: {
                 formatter: '{value} ' + res.unit0abbr
             }
         }, {
             type: 'value',
-            name: res.unit2name,
+            name: res.unit1name,
             scale: true,
-            min: 'dataMin' - 10,
-            max: 'dataMax' + 10,
+            min: min1,
+            max: max1,
+            //min: 'dataMin' - 10,
+            //max: 'dataMax' + 10,
             axisLabel: {
-                formatter: '{value} ' + res.unit2abbr
+                formatter: '{value} ' + res.unit1abbr
             }
+
         }
         ];
+
+    } else if (metaSum == '3') {
+        legend_data = {"data": [res.unit1name, res.unit0name, res.unit2name]};
+
+        var result0;
+        var result1;
+        var result2;
+
         if (dataSum == 0) {
             series_data = [
                 {
@@ -270,20 +290,20 @@ function optionFactory(res) {
                 }
             ];
         } else {
-            var result0 = res.result0.split(",");
-            var result1 = res.result1.split(",");
-            var result2 = res.result2.split(",");
+            result0 = res.result0.split(",");
+            result1 = res.result1.split(",");
+            result2 = res.result2.split(",");
             series_data = [
                 {
                     name: res.unit1name,
                     type: 'line',
-                    symbol:'triangle',
-                    symbolSize:1,
+                    symbol: 'triangle',
+                    symbolSize: 1,
                     itemStyle: {
                         normal: {
                             color: 'red',
                             lineStyle: {        // 系列级个性化折线样式
-                                width: 2,
+                                width: 1,
                                 type: 'solid'
                             }
                         }
@@ -303,15 +323,15 @@ function optionFactory(res) {
                 }, {
                     name: res.unit0name,
                     type: 'line',
-                    symbol:'emptyDiamond',
-                    symbolSize:1,
+                    symbol: 'emptyDiamond',
+                    symbolSize: 1,
                     itemStyle: {
                         normal: {
                             lineStyle: {
-                                width: 2,
+                                width: 1,
                                 color: '#ff6347',
-                                type:'solid',
-                                shadowColor : 'rgba(255,165,0,0.6)',
+                                type: 'solid',
+                                shadowColor: 'rgba(255,165,0,0.6)',
                                 shadowBlur: 1000
                             }
                         }
@@ -333,15 +353,15 @@ function optionFactory(res) {
                 }, {
                     name: res.unit2name,
                     type: 'line',
-                    symbol:'emptyCircle',
-                    symbolSize:1,
+                    symbol: 'emptyCircle',
+                    symbolSize: 1,
                     itemStyle: {
                         normal: {
                             lineStyle: {
-                                width: 2,
+                                width: 1,
                                 color: '#30e0e0',
-                                type:'solid',
-                                shadowColor : 'rgba(255,165,0,0.6)',
+                                type: 'solid',
+                                shadowColor: 'rgba(255,165,0,0.6)',
                                 shadowBlur: 1000
                             }
                         }
@@ -364,46 +384,77 @@ function optionFactory(res) {
             ];
         }
 
-    } else if (metaSum == '4') {
-        legend_data = {"data": [res.unit0name, res.unit1name, res.unit2name, res.unit3name]};
+        var min0 = 0;
+        var min1 = 0;
+        var min2 = 0;
+        var max0 = 0;
+        var max1 = 0;
+        var max2 = 0;
+
+        if (result0) {
+            min0 = findMin(result0);
+            max0 = findMax(result0);
+            //min0 = min(result0);
+            //max0 = max(result0);
+        }
+
+        if (result1) {
+            min1 = findMin(result1);
+            max1 = findMax(result1);
+            //min1 = min(result1);
+            //max1 = max(result1);
+        }
+
+        if (result2) {
+            min2 = findMin(result2);
+            max2 = findMax(result2);
+            //min2 = min(result2);
+            //max2 = max(result2);
+        }
+
         yAxis_data = [{
-            type: 'value',
-            name: res.unit0name,
-            scale: true,
-            min: 'dataMin' - 10,
-            max: 'dataMax' + 10,
-            axisLabel: {
-                formatter: '{value} ' + res.unit0abbr
-            }
-        }, {
             type: 'value',
             name: res.unit1name,
             scale: true,
-            min: 'dataMin' - 10,
-            max: 'dataMax' + 10,
+            min: min1,
+            max: max1,
+            //min: 'dataMin' - 10,
+            //max: 'dataMax' + 10,
             axisLabel: {
                 formatter: '{value} ' + res.unit1abbr
             }
         }, {
             type: 'value',
-            name: res.unit2name,
+            name: res.unit0name,
             scale: true,
-            min: 'dataMin' - 10,
-            max: 'dataMax' + 10,
+            min: min0,
+            max: max0,
+            //min: 'dataMin' - 10,
+            //max: 'dataMax' + 10,
             axisLabel: {
-                formatter: '{value} ' + res.unit2abbr
+                formatter: '{value} ' + res.unit0abbr
             }
         }, {
             type: 'value',
-            name: res.unit3name,
+            name: res.unit2name,
             scale: true,
-            min: 'dataMin' - 10,
-            max: 'dataMax' + 10,
+            min: min2,
+            max: max2,
+            //min: 'dataMin' - 10,
+            //max: 'dataMax' + 10,
             axisLabel: {
-                formatter: '{value} ' + res.unit3abbr
+                formatter: '{value} ' + res.unit2abbr
             }
         }
         ];
+    } else if (metaSum == '4') {
+        legend_data = {"data": [res.unit0name, res.unit1name, res.unit2name, res.unit3name]};
+
+        var result0;
+        var result1;
+        var result2;
+        var result3;
+
         if (dataSum == 0) {
             series_data = [
                 {
@@ -428,10 +479,10 @@ function optionFactory(res) {
                 }
             ];
         } else {
-            var result0 = res.result0.split(",");
-            var result1 = res.result1.split(",");
-            var result2 = res.result2.split(",");
-            var result3 = res.result3.split(",");
+            result0 = res.result0.split(",");
+            result1 = res.result1.split(",");
+            result2 = res.result2.split(",");
+            result3 = res.result3.split(",");
             series_data = [
                 {
                     name: res.unit0name,
@@ -455,6 +506,91 @@ function optionFactory(res) {
                 }
             ];
         }
+
+        var min0 = 0;
+        var min1 = 0;
+        var min2 = 0;
+        var min3 = 0;
+        var max0 = 0;
+        var max1 = 0;
+        var max2 = 0;
+        var max3 = 0;
+
+        if (result0) {
+            //min0 = min(result0);
+            //max0 = max(result0);
+            min0 = findMin(result0);
+            max0 = findMax(result0);
+
+        }
+
+        if (result1) {
+            min1 = findMin(result1);
+            max1 = findMax(result1);
+            //min1 = min(result1);
+            //max1 = max(result1);
+        }
+
+        if (result2) {
+            min2 = findMin(result2);
+            max2 = findMax(result2);
+            //min2 = min(result2);
+            //max2 = max(result2);
+        }
+
+        if (result3) {
+            min3 = findMin(result3);
+            max3 = findMax(result3);
+            //min3 = min(result3);
+            //max3 = max(result3);
+        }
+
+        yAxis_data = [{
+            type: 'value',
+            name: res.unit0name,
+            scale: true,
+            min: min0,
+            max: max0,
+            //min: 'dataMin' - 10,
+            //max: 'dataMax' + 10,
+            axisLabel: {
+                formatter: '{value} ' + res.unit0abbr
+            }
+        }, {
+            type: 'value',
+            name: res.unit1name,
+            scale: true,
+            min: min1,
+            max: max1,
+            //min: 'dataMin' - 10,
+            //max: 'dataMax' + 10,
+            axisLabel: {
+                formatter: '{value} ' + res.unit1abbr
+            }
+        }, {
+            type: 'value',
+            name: res.unit2name,
+            scale: true,
+            min: min2,
+            max: max2,
+            //min: 'dataMin' - 10,
+            //max: 'dataMax' + 10,
+            axisLabel: {
+                formatter: '{value} ' + res.unit2abbr
+            }
+        }, {
+            type: 'value',
+            name: res.unit3name,
+            scale: true,
+            min: min3,
+            max: max3,
+            //min: 'dataMin' - 10,
+            //max: 'dataMax' + 10,
+            axisLabel: {
+                formatter: '{value} ' + res.unit3abbr
+            }
+        }
+        ];
     } else {
         return;
     }
@@ -499,8 +635,8 @@ function defaultOption() {
         yAxis: [{
             type: 'value',
             scale: true,
-            min: 'dataMin' - 10,
-            max: 'dataMax' + 10
+            //min: 'dataMin' - 10,
+            //max: 'dataMax' + 10
         }],
         series: [{
             name: '-',
@@ -521,6 +657,15 @@ $.extend($.fn.validatebox.defaults.rules, {
         message: 'The date must be less than or equals to {0}.'
     }
 })
+
+function findMax(array) {
+    return Math.max.apply(null, array) + 2;
+}
+
+function findMin(array) {
+    return Math.min.apply(null, array) - 2;
+}
+
 function myformatter(date) {
     var y = date.getFullYear();
     var m = date.getMonth() + 1;
@@ -701,7 +846,7 @@ function doAjaxTail() {
             error: function (e) {
                 var error = eval("(" + e + ")");
                 if (error.error == undefined) {
-                    alert('服务器运行缓慢，请稍后刷新！' );
+                    alert('服务器运行缓慢，请稍后刷新！');
                 } else {
                     alert('服务器运行缓慢，请稍后刷新');
                 }
