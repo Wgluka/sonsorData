@@ -743,7 +743,9 @@ function doQueryPrev() {
         gap = 30;
     } else if (datesgap == 'week') {
         gap = 7;
-    } else {
+    }else if (datesgap == 'quarter'){
+        gap = 90;
+    }  else {
         gap = 1;
     }
     var datePrev = formatDate(deleteDate(datebefore, gap));
@@ -771,6 +773,8 @@ function doQueryNext() {
         gap = 30;
     } else if (datesgap == 'week') {
         gap = 7;
+    } else if (datesgap == 'quarter') {
+        gap = 90;
     } else {
         gap = 1;
     }
