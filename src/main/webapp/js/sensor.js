@@ -115,6 +115,9 @@ function optionFactory(res) {
         if (result0) {
             max0 = findMax(result0);
             min0 = findMin(result0);
+            var array = adjustScope(max0,min0);
+            max0 = array[0];
+            min0 = array[1];
 
             //max0 = Math.max(result0);
             //min0 = Math.min(result0);
@@ -130,7 +133,10 @@ function optionFactory(res) {
             min: min0,
             max: max0,
             axisLabel: {
-                formatter: '{value} ' + res.unit0abbr
+                //formatter: '{value} ' + res.unit0abbr
+                formatter: function(value){
+                    return value.toFixed(2) + ' ' + res.unit0abbr;
+                }
             }
         }];
 
@@ -227,6 +233,10 @@ function optionFactory(res) {
         if (result0) {
             min0 = findMin(result0);
             max0 = findMax(result0);
+
+            var array0 = adjustScope(max0,min0);
+            max0 = array0[0];
+            min0 = array0[1];
             //min0 = min(result0);
             //max0 = max(result0);
         }
@@ -234,6 +244,11 @@ function optionFactory(res) {
         if (result1) {
             min1 = findMin(result1);
             max1 = findMax(result1);
+
+            var array1 = adjustScope(max1,min1);
+            max1 = array1[0];
+            min1 = array1[1];
+
             //min1 = min(result1);
             //max1 = max(result1);
         }
@@ -247,7 +262,10 @@ function optionFactory(res) {
             //min: 'dataMin' - 10,
             //max: 'dataMax' + 10,
             axisLabel: {
-                formatter: '{value} ' + res.unit0abbr
+                //formatter: '{value} ' + res.unit0abbr
+                formatter: function(value){
+                    return value.toFixed(2) + ' ' + res.unit0abbr;
+                }
             }
         }, {
             type: 'value',
@@ -258,7 +276,10 @@ function optionFactory(res) {
             //min: 'dataMin' - 10,
             //max: 'dataMax' + 10,
             axisLabel: {
-                formatter: '{value} ' + res.unit1abbr
+                //formatter: '{value} ' + res.unit1abbr
+                formatter: function(value){
+                    return value.toFixed(2) + ' ' + res.unit1abbr;
+                }
             }
 
         }
@@ -394,6 +415,10 @@ function optionFactory(res) {
         if (result0) {
             min0 = findMin(result0);
             max0 = findMax(result0);
+
+            var array0 = adjustScope(max0,min0);
+            max0 = array0[0];
+            min0 = array0[1];
             //min0 = min(result0);
             //max0 = max(result0);
         }
@@ -401,6 +426,10 @@ function optionFactory(res) {
         if (result1) {
             min1 = findMin(result1);
             max1 = findMax(result1);
+
+            var array1 = adjustScope(max1,min1);
+            max1 = array1[0];
+            min1 = array1[1];
             //min1 = min(result1);
             //max1 = max(result1);
         }
@@ -408,6 +437,10 @@ function optionFactory(res) {
         if (result2) {
             min2 = findMin(result2);
             max2 = findMax(result2);
+
+            var array2 = adjustScope(max2,min2);
+            max2 = array2[0];
+            min2 = array2[1];
             //min2 = min(result2);
             //max2 = max(result2);
         }
@@ -421,7 +454,10 @@ function optionFactory(res) {
             //min: 'dataMin' - 10,
             //max: 'dataMax' + 10,
             axisLabel: {
-                formatter: '{value} ' + res.unit1abbr
+                //formatter: '{value} ' + res.unit1abbr
+                formatter: function(value){
+                    return value.toFixed(2) + ' ' + res.unit1abbr;
+                }
             }
         }, {
             type: 'value',
@@ -432,7 +468,10 @@ function optionFactory(res) {
             //min: 'dataMin' - 10,
             //max: 'dataMax' + 10,
             axisLabel: {
-                formatter: '{value} ' + res.unit0abbr
+                //formatter: '{value} ' + res.unit0abbr
+                formatter: function(value){
+                    return value.toFixed(2) + ' ' + res.unit0abbr;
+                }
             }
         }, {
             type: 'value',
@@ -443,7 +482,10 @@ function optionFactory(res) {
             //min: 'dataMin' - 10,
             //max: 'dataMax' + 10,
             axisLabel: {
-                formatter: '{value} ' + res.unit2abbr
+                //formatter: '{value} ' + res.unit2abbr
+                formatter: function(value){
+                    return value.toFixed(2) + ' ' + res.unit2abbr;
+                }
             }
         }
         ];
@@ -521,12 +563,19 @@ function optionFactory(res) {
             //max0 = max(result0);
             min0 = findMin(result0);
             max0 = findMax(result0);
+            var array0  = adjustScope(max0,min0);
+            max0 = array0[0];
+            min0 = array0[1];
 
         }
 
         if (result1) {
             min1 = findMin(result1);
             max1 = findMax(result1);
+
+            var array1 = adjustScope(max1,min1);
+            max1 = array1[0];
+            min1 = array1[1];
             //min1 = min(result1);
             //max1 = max(result1);
         }
@@ -534,6 +583,10 @@ function optionFactory(res) {
         if (result2) {
             min2 = findMin(result2);
             max2 = findMax(result2);
+
+            var array2 = adjustScope(max2,min2);
+            max2 = array2[0];
+            min2 = array2[1];
             //min2 = min(result2);
             //max2 = max(result2);
         }
@@ -541,6 +594,10 @@ function optionFactory(res) {
         if (result3) {
             min3 = findMin(result3);
             max3 = findMax(result3);
+
+            var array3 = adjustScope(max3,min3);
+            max3 = array3[0];
+            min3 = array3[1];
             //min3 = min(result3);
             //max3 = max(result3);
         }
@@ -554,7 +611,10 @@ function optionFactory(res) {
             //min: 'dataMin' - 10,
             //max: 'dataMax' + 10,
             axisLabel: {
-                formatter: '{value} ' + res.unit0abbr
+                //formatter: '{value} ' + res.unit0abbr
+                formatter: function(value){
+                    return value.toFixed(2) + ' ' + res.unit0abbr;
+                }
             }
         }, {
             type: 'value',
@@ -565,7 +625,10 @@ function optionFactory(res) {
             //min: 'dataMin' - 10,
             //max: 'dataMax' + 10,
             axisLabel: {
-                formatter: '{value} ' + res.unit1abbr
+                //formatter: '{value} ' + res.unit1abbr
+                formatter: function(value){
+                    return value.toFixed(2) + ' ' + res.unit1abbr;
+                }
             }
         }, {
             type: 'value',
@@ -576,7 +639,10 @@ function optionFactory(res) {
             //min: 'dataMin' - 10,
             //max: 'dataMax' + 10,
             axisLabel: {
-                formatter: '{value} ' + res.unit2abbr
+                //formatter: '{value} ' + res.unit2abbr
+                formatter: function(value){
+                    return value.toFixed(2) + ' ' + res.unit2abbr;
+                }
             }
         }, {
             type: 'value',
@@ -587,7 +653,10 @@ function optionFactory(res) {
             //min: 'dataMin' - 10,
             //max: 'dataMax' + 10,
             axisLabel: {
-                formatter: '{value} ' + res.unit3abbr
+                //formatter: '{value} ' + res.unit3abbr
+                formatter: function(value){
+                    return value.toFixed(2) + ' ' + res.unit3abbr;
+                }
             }
         }
         ];
@@ -658,12 +727,22 @@ $.extend($.fn.validatebox.defaults.rules, {
     }
 })
 
+function adjustScope(max, min){
+    var scope = max - min;
+    var padding = scope * 0.1;
+    var a = new Array(2);
+    a[0] = (max + padding).toFixed(2);
+    a[1] = (min - padding).toFixed(2);
+    return a;
+
+}
+
 function findMax(array) {
-    return Math.max.apply(null, array) + 2;
+    return Math.max.apply(null, array);
 }
 
 function findMin(array) {
-    return Math.min.apply(null, array) - 2;
+    return Math.min.apply(null, array);
 }
 
 function myformatter(date) {
