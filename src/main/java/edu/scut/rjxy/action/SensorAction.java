@@ -225,7 +225,10 @@ public class SensorAction extends ActionSupport
 
             time[0] = date;
             time[1] = DateTimeConvert.getNextThirtyDay(date);
-        } else {
+        }else if (dateType.equals("quarter")){
+            time[0] = date;
+            time[1] = DateTimeConvert.getNextQuarter(date);
+        }  else {
             time[0] = date;
             time[1] = DateTimeConvert.getNextDay(date);
 

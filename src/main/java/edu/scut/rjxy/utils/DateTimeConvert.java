@@ -123,6 +123,21 @@ public final class DateTimeConvert {
     }
 
     /**
+     *获取当前日期之后的三个月
+     *@param now
+     * @return
+     * @throws ParseException
+     */
+    public static final String getNextQuarter(String now) throws ParseException{
+        Date date = format.parse(now);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.MONTH,3);
+        String nextQuarter = format.format(calendar.getTime());
+        return nextQuarter;
+    }
+
+    /**
      * 格式化时间字符串格式
      * @param date 传入对应格式String
      * @return 被格式化的String
