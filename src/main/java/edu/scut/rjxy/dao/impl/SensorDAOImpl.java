@@ -47,6 +47,15 @@ public class SensorDAOImpl extends HibernateDaoSupport implements SensorDAO {
         return query.list();
     }
 
+    public List getAlarmAcknowledged() {
+
+        final String alarmSql =  "select DISTINCT sensorSerialNo from webLogger.dbo.alarmlog " +
+                "where alarmAcknowledged = 0";
+        SQLQuery query = this.getSession().createSQLQuery(alarmSql)
+                .addScalar("sensorSerialNo", new LongType());
+        return query.list();
+    }
+
     public String getMainMenu() {
 
         final String mainMenuSql = "select siteName from webLogger.dbo.sites ";

@@ -138,8 +138,9 @@ public class SensorServiceImpl implements SensorService {
 
         List<Object[]> menus = sensorDAO.getMenu();
         String mainMenu = sensorDAO.getMainMenu();
+        List<Long> alarm = sensorDAO.getAlarmAcknowledged();
         LOG.debug("主目录主干名称："+mainMenu);
-        Map<String, Object> map = handleMenu(mainMenu, menus);
+        Map<String, Object> map = handleMenu(mainMenu, menus,alarm);
 
         return map;
     }
@@ -297,7 +298,7 @@ public class SensorServiceImpl implements SensorService {
      * @param menus 数据库记录
      * @return 被格式化的目录
      */
-    private Map handleMenu(String mainMenu, List<Object[]> menus) {
+    private Map handleMenu(String mainMenu, List<Object[]> menus, List<Long> alarm) {
 
         if (menus == null) {
             return null;
@@ -348,6 +349,23 @@ public class SensorServiceImpl implements SensorService {
             map.put("second_1name", sonsorName.substring(0, sonsorName.length() - 1));
             map.put("second_1key", sonsorKey.substring(0, sonsorKey.length() - 1));
         }
+
+        StringBuffer alarmData = new StringBuffer();
+        String Data = null;
+
+        //处理警报数据
+        if(alarm != null){
+            alarmData.append(alarm.get(0));
+            int length = alarm.size();
+            for(int i = 1; i < length; ++i){
+                alarmData.append("," + alarm.get(i));
+            }
+            Data = alarmData.toString();
+        }
+
+        LOG.debug("alarm的数据： " + Data);
+
+        map.put("alarm", Data);
 
         LOG.debug("menu map(目录情况) :" + map);
         return map;

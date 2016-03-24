@@ -55,6 +55,12 @@ public interface SensorDAO {
     public String getMainMenu();
 
     /**
+     * 查询未被处理的警报
+     * @return Sensor的序号
+     */
+    public List getAlarmAcknowledged();
+
+    /**
      * 从数据库中找到指定sensor中，第一条记录产生的时间
      * @param sensorID sensor ID
      * @return 时间字符串
