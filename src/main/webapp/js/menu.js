@@ -16,9 +16,11 @@ $(document).ready(function(){
             url:'getMenuSensorAction.action',
             data : "datefield=" +  "&dategap="  + "&sensorno=" ,
             success:function(res){
+
                 // 将数据变成echarts接手的option
                 var ores = eval ("(" + res + ")");
-                treeData=optionMenu(ores);
+                var list = new Array();
+                treeData=optionMenu(ores,list);
 
                 //实例化树形菜单
                 $("#tree").tree({
@@ -48,16 +50,29 @@ $(document).ready(function(){
                         CloseTab(this, item.name);
                     }
                 });
-            },
+
+                //alert(list.length);
+                //alert(list);
+                alarm(list);
+
+             },
             error : function(e) {
                 alert('Error: ' + e);
             }
         }
 
     );
-
-
 });
+
+function alarm(list){
+
+    var len = list.length;
+
+    if(len == 0)
+        return;
+    for(var i = 0; i < len; ++i)
+        $("#_easyui_tree_" + list[i] +" .tree-title").attr("style","color:red");
+}
 
 $(function () {
 
@@ -111,17 +126,31 @@ function CloseTab(menu, type) {
     }
 }
 
-function optionMenu(menus){
+function optionMenu(menus,list){
 
     if(menus.firstMenu == undefined){
         return;
     }
+
+    var alarmData = menus.alarm;
+    if(alarmData != undefined)
+        alarmData = alarmData.split(',');
+    else
+        alarmData = null;
+
+    //alert(alarmData);
+
     var first = menus.firstMenu.split(',');
     //console.info(first);
     var firstNo = first.length;
     var firChildren = [];
-    for(var firIdx = 0;firIdx < first.length;firIdx++){
 
+    //记录元素的的下标和id
+    var index = 0;
+    var id = 1;
+
+    for(var firIdx = 0;firIdx < first.length;firIdx++){
+        ++id;
         var second = {};
         second["text"] = first[firIdx];
         second["state"] = "closed";
@@ -137,6 +166,13 @@ function optionMenu(menus){
                 secChildAttr["key"] = secChildKey[secIdx];
                 secondChildren["attributes"] = secChildAttr;
                 secChild.push(secondChildren);
+
+                ++id;
+                if(sensorIsAlarm(secChildKey[secIdx],alarmData)){
+                    //alert(secChildKey[secIdx]);
+                    list[index] = id;
+                    ++index;
+                }
             }
         }
         if(firIdx==1){
@@ -150,6 +186,12 @@ function optionMenu(menus){
                 secChildAttr["key"] = secChildKey[secIdx];
                 secondChildren["attributes"] = secChildAttr;
                 secChild.push(secondChildren);
+
+                ++id;
+                if(sensorIsAlarm(secChildKey[secIdx],alarmData)){alert(secChildKey[secIdx]);
+                    list[index] = id;
+                    ++index;
+                }
             }
         }
         if(firIdx==2){
@@ -163,6 +205,12 @@ function optionMenu(menus){
                 secChildAttr["key"] = secChildKey[secIdx];
                 secondChildren["attributes"] = secChildAttr;
                 secChild.push(secondChildren);
+
+                ++id;
+                if(sensorIsAlarm(secChildKey[secIdx],alarmData)){alert(secChildKey[secIdx]);
+                    list[index] = id;
+                    ++index;
+                }
             }
         }
         if(firIdx==3){
@@ -176,6 +224,12 @@ function optionMenu(menus){
                 secChildAttr["key"] = secChildKey[secIdx];
                 secondChildren["attributes"] = secChildAttr;
                 secChild.push(secondChildren);
+
+                ++id;
+                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){alert(secChildKey[secIdx]);
+                    list[index] = id;
+                    ++index;
+                }
             }
         }
         if(firIdx==4){
@@ -189,6 +243,12 @@ function optionMenu(menus){
                 secChildAttr["key"] = secChildKey[secIdx];
                 secondChildren["attributes"] = secChildAttr;
                 secChild.push(secondChildren);
+
+                ++id;
+                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){alert(secChildKey[secIdx]);
+                    list[index] = id;
+                    ++index;
+                }
             }
         }
         if(firIdx==5){
@@ -202,6 +262,12 @@ function optionMenu(menus){
                 secChildAttr["key"] = secChildKey[secIdx];
                 secondChildren["attributes"] = secChildAttr;
                 secChild.push(secondChildren);
+
+                ++id;
+                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){alert(secChildKey[secIdx]);
+                    list[index] = id;
+                    ++index;
+                }
             }
         }
         if(firIdx==6){
@@ -215,6 +281,12 @@ function optionMenu(menus){
                 secChildAttr["key"] = secChildKey[secIdx];
                 secondChildren["attributes"] = secChildAttr;
                 secChild.push(secondChildren);
+
+                ++id;
+                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){alert(secChildKey[secIdx]);
+                    list[index] = id;
+                    ++index;
+                }
             }
         }
         if(firIdx==7){
@@ -228,6 +300,12 @@ function optionMenu(menus){
                 secChildAttr["key"] = secChildKey[secIdx];
                 secondChildren["attributes"] = secChildAttr;
                 secChild.push(secondChildren);
+
+                ++id;
+                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){alert(secChildKey[secIdx]);
+                    list[index] = id;
+                    ++index;
+                }
             }
         }
         if(firIdx==8){
@@ -241,6 +319,12 @@ function optionMenu(menus){
                 secChildAttr["key"] = secChildKey[secIdx];
                 secondChildren["attributes"] = secChildAttr;
                 secChild.push(secondChildren);
+
+                ++id;
+                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){alert(secChildKey[secIdx]);
+                    list[index] = id;
+                    ++index;
+                }
             }
         }
         if(firIdx==9){
@@ -254,6 +338,12 @@ function optionMenu(menus){
                 secChildAttr["key"] = secChildKey[secIdx];
                 secondChildren["attributes"] = secChildAttr;
                 secChild.push(secondChildren);
+
+                ++id;
+                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){alert(secChildKey[secIdx]);
+                    list[index] = id;
+                    ++index;
+                }
             }
         }
         if(firIdx==10){
@@ -265,8 +355,14 @@ function optionMenu(menus){
                 var secChildAttr = {};
                 secChildAttr["url"] =  "sensordemo.html";
                 secChildAttr["key"] = secChildKey[secIdx];
-                secondChildren["attributes"] = secChildAttr;
+                                secondChildren["attributes"] = secChildAttr;
                 secChild.push(secondChildren);
+
+                ++id;
+                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){alert(secChildKey[secIdx]);
+                    list[index] = id;
+                    ++index;
+                }
             }
         }
 
@@ -284,4 +380,29 @@ function optionMenu(menus){
         }
     ];
     return treeData;
+}
+
+//判断sensor中的是否警告
+function sensorIsAlarm(sensorNo,array){
+
+    if(array == null)
+        return false;
+
+    var len = array.length;
+    if( len == 0){
+        return false;
+    }
+
+    for(var i = 0; i < len; ++i){
+        if(sensorNo == array[i])
+            return true;
+    }
+    return false;
+}
+
+function changeColor(sensorNo,array){
+    if(sensorIsAlarm(sensorNo,array)){
+        return "red";
+    }
+    return "black";
 }
