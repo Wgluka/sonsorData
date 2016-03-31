@@ -22,6 +22,7 @@ $(document).ready(function(){
                 var list = new Array();
                 treeData=optionMenu(ores,list);
 
+
                 //实例化树形菜单
                 $("#tree").tree({
                     data: treeData,
@@ -51,8 +52,6 @@ $(document).ready(function(){
                     }
                 });
 
-                //alert(list.length);
-                //alert(list);
                 alarm(list);
 
              },
@@ -169,7 +168,6 @@ function optionMenu(menus,list){
 
                 ++id;
                 if(sensorIsAlarm(secChildKey[secIdx],alarmData)){
-                    //alert(secChildKey[secIdx]);
                     list[index] = id;
                     ++index;
                 }
@@ -188,7 +186,7 @@ function optionMenu(menus,list){
                 secChild.push(secondChildren);
 
                 ++id;
-                if(sensorIsAlarm(secChildKey[secIdx],alarmData)){alert(secChildKey[secIdx]);
+                if(sensorIsAlarm(secChildKey[secIdx],alarmData)){
                     list[index] = id;
                     ++index;
                 }
@@ -207,7 +205,7 @@ function optionMenu(menus,list){
                 secChild.push(secondChildren);
 
                 ++id;
-                if(sensorIsAlarm(secChildKey[secIdx],alarmData)){alert(secChildKey[secIdx]);
+                if(sensorIsAlarm(secChildKey[secIdx],alarmData)){
                     list[index] = id;
                     ++index;
                 }
@@ -226,7 +224,7 @@ function optionMenu(menus,list){
                 secChild.push(secondChildren);
 
                 ++id;
-                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){alert(secChildKey[secIdx]);
+                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){
                     list[index] = id;
                     ++index;
                 }
@@ -245,7 +243,7 @@ function optionMenu(menus,list){
                 secChild.push(secondChildren);
 
                 ++id;
-                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){alert(secChildKey[secIdx]);
+                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){
                     list[index] = id;
                     ++index;
                 }
@@ -264,7 +262,7 @@ function optionMenu(menus,list){
                 secChild.push(secondChildren);
 
                 ++id;
-                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){alert(secChildKey[secIdx]);
+                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){
                     list[index] = id;
                     ++index;
                 }
@@ -283,7 +281,7 @@ function optionMenu(menus,list){
                 secChild.push(secondChildren);
 
                 ++id;
-                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){alert(secChildKey[secIdx]);
+                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){
                     list[index] = id;
                     ++index;
                 }
@@ -302,7 +300,7 @@ function optionMenu(menus,list){
                 secChild.push(secondChildren);
 
                 ++id;
-                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){alert(secChildKey[secIdx]);
+                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){
                     list[index] = id;
                     ++index;
                 }
@@ -321,7 +319,7 @@ function optionMenu(menus,list){
                 secChild.push(secondChildren);
 
                 ++id;
-                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){alert(secChildKey[secIdx]);
+                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){
                     list[index] = id;
                     ++index;
                 }
@@ -340,7 +338,7 @@ function optionMenu(menus,list){
                 secChild.push(secondChildren);
 
                 ++id;
-                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){alert(secChildKey[secIdx]);
+                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){
                     list[index] = id;
                     ++index;
                 }
@@ -359,7 +357,7 @@ function optionMenu(menus,list){
                 secChild.push(secondChildren);
 
                 ++id;
-                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){alert(secChildKey[secIdx]);
+                if(sensorIsAlarm(secChildKey[secIdx], alarmData)){
                     list[index] = id;
                     ++index;
                 }
