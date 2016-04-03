@@ -28,7 +28,11 @@
         </listener-class>
     </listener>
 
+    <!--<welcome-file-list>-->
+        <!--<welcome-file>/main.html</welcome-file>-->
+    <!--</welcome-file-list>-->
+
     <welcome-file-list>
-        <welcome-file>/main.html</welcome-file>
+        <welcome-file>/chart-xchart.html</welcome-file>
     </welcome-file-list>
 </web-app>

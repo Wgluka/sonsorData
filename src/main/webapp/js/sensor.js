@@ -22,7 +22,13 @@ function doAjaxdemo() {
             var myChart = ec.init(document.getElementById('main'));
             var datefield = $('#datefield').datebox('getValue');
             var dategap = $('#dategap').val();
-            var sensorno = $('#sensorno').val();
+            if(dategap == '')
+                dategap = $('#sensorno').val();
+            //var sensorno = $('#sensorno').val();
+            var sensorno = $("#menus").attr("key");
+            //alert("datafield" + datefield);
+            //alert("dategap" + dategap);
+            //alert("sensorno " + sensorno);
             // console.info('sensorno:' + sensorno + ',datefield:' + datefield + ',dategap=' + dategap);
             if (datefield == '' || dategap == '') {
                 alert('有输入项为空！');
@@ -33,6 +39,8 @@ function doAjaxdemo() {
                     url: 'querySensorAction.action',
                     data: "datefield=" + datefield + "&dategap=" + dategap + "&sensorno=" + sensorno,
                     success: function (res) {
+                        alert("ok");
+
                         // 将数据变成echarts接手的option
                         var ores = eval("(" + res + ")");
                         var option = optionFactory(ores);

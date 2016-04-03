@@ -397,10 +397,10 @@ function sensorIsAlarm(sensorNo,array){
     }
     return false;
 }
-
-function changeColor(sensorNo,array){
-    if(sensorIsAlarm(sensorNo,array)){
-        return "red";
-    }
-    return "black";
-}
+//
+//function changeColor(sensorNo,array){
+//    if(sensorIsAlarm(sensorNo,array)){
+//        return "red";
+//    }
+//    return "black";
+//}

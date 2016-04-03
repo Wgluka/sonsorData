@@ -20,11 +20,14 @@
 </head>
 <body>
 <script type="text/javascript">
+//    如果要使用chart-xchart的话，需要删掉这一段
     $(function () {
         //解析url
         var param = window.location.href;
+        alert(param);
         //var reg = new RegExp("(^|&)" + param + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1);
+        alert(r);
         var p = r.split("&");
         var ary = new Array();
         for (i = 0; i < p.length; i++) {
@@ -34,6 +37,7 @@
         }
 
         var id = ary[0];
+
 //        console.info(id);
         $("#sensorno").val(id);
     });
