@@ -22,13 +22,11 @@ function doAjaxdemo() {
             var myChart = ec.init(document.getElementById('main'));
             var datefield = $('#datefield').datebox('getValue');
             var dategap = $('#dategap').val();
-            if(dategap == '')
-                dategap = $('#sensorno').val();
-            //var sensorno = $('#sensorno').val();
+
             var sensorno = $("#menus").attr("key");
-            //alert("datafield" + datefield);
-            //alert("dategap" + dategap);
-            //alert("sensorno " + sensorno);
+            if(sensorno == '')
+                sensorno = $('#sensorno').val();
+
             // console.info('sensorno:' + sensorno + ',datefield:' + datefield + ',dategap=' + dategap);
             if (datefield == '' || dategap == '') {
                 alert('有输入项为空！');
@@ -39,7 +37,6 @@ function doAjaxdemo() {
                     url: 'querySensorAction.action',
                     data: "datefield=" + datefield + "&dategap=" + dategap + "&sensorno=" + sensorno,
                     success: function (res) {
-                        //alert("ok");
 
                         // 将数据变成echarts接手的option
                         var ores = eval("(" + res + ")");
@@ -66,9 +63,7 @@ function doAjaxdemo() {
 function optionFactory(res) {
     var metaSum = res.metaSum;
     var dataSum = res.dataSum;
-    //if(dataSum == 0){
-    //    return defaultOption(res);
-    //}
+
     var legend_data = {};
     var yAxis_data = [];
     var series_data = [];
@@ -127,11 +122,6 @@ function optionFactory(res) {
             max0 = array[0];
             min0 = array[1];
 
-            //max0 = Math.max(result0);
-            //min0 = Math.min(result0);
-            //min0 = result0.min();
-            //min0 = min(result0);
-            //max0 = max(result0);
         }
 
         yAxis_data = [{
@@ -881,8 +871,14 @@ function doAjaxHead() {
 
     var datefield = $('#datefield').datebox('getValue');
     var dategap = $('#dategap').val();
-    var sensorno = $('#sensorno').val();
+    //var sensorno = $('#sensorno').val();
+    var sensorno = $("#menus").attr("key");
+    if(sensorno == '')
+        sensorno = $('#sensorno').val();
     //console.info('sensorno:' + sensorno + ',datefield:' + datefield + ',dategap=' + dategap);
+
+    //alert("head");
+
     if (sensorno == '' || dategap == '') {
         alert('有输入项为空！');
         return;
@@ -894,6 +890,9 @@ function doAjaxHead() {
             success: function (res) {
                 var ores = eval("(" + res + ")");
                 //console.info('headTime :' + ores.headDate);
+
+                //alert(ores.headDate);
+
                 $('#datefield').datebox('setValue', ores.headDate);	// set datebox value
                 doAjaxdemo();
             },
@@ -918,7 +917,12 @@ function doAjaxTail() {
 
     var datefield = $('#datefield').datebox('getValue');
     var dategap = $('#dategap').val();
-    var sensorno = $('#sensorno').val();
+    //var sensorno = $('#sensorno').val();
+
+    var sensorno = $("#menus").attr("key");
+    if(sensorno == '')
+        sensorno = $('#sensorno').val();
+
     //console.info('sensorno:' + sensorno + ',datefield:' + datefield + ',dategap=' + dategap);
     if (sensorno == '' || dategap == '') {
         alert('有输入项为空！');

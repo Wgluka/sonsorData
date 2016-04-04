@@ -16,7 +16,12 @@ function doMonthStatictis() {
 
             var datefield = $('#datefield').datebox('getValue');
             var dategap = $('#dategap').val();
-            var sensorno = $('#sensorno').val();
+            //var sensorno = $('#sensorno').val();
+
+            var sensorno = $("#menus").attr("key");
+            if(sensorno == '')
+                sensorno = $('#sensorno').val();
+
             //console.info('sensorno:' + sensorno + ',datefield:' + datefield + ',dategap=' + dategap);
             if (datefield == '' || dategap == '') {
                 alert('有输入项为空！');
