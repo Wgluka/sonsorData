@@ -39,7 +39,7 @@ function doAjaxdemo() {
                     url: 'querySensorAction.action',
                     data: "datefield=" + datefield + "&dategap=" + dategap + "&sensorno=" + sensorno,
                     success: function (res) {
-                        alert("ok");
+                        //alert("ok");
 
                         // 将数据变成echarts接手的option
                         var ores = eval("(" + res + ")");
