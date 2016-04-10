@@ -1,19 +1,21 @@
 package test;
 
+import java.beans.*;
 import java.sql.*;
+import java.sql.Statement;
 
 /**
  * Created by yukai on 2016/3/23.
  */
 public class TestAlarm {
 
-    public static void main(String[] args){
+    public void testGetAlarm(){
         Connection conn = null;
         Statement stmt = null;
 
-        String url = "jdbc:sqlserver://222.201.139.22:49156;databaseName=weblogger";
-        String user = "sensorData";
-        String pass = "Sensor123";
+        String url = "jdbc:sqlserver://222.201.139.21:1435;databaseName=weblogger";
+        String user = "sa";
+        String pass = "Test123";
 
         try {
             conn = DriverManager.getConnection(url,user,pass);
@@ -49,6 +51,14 @@ public class TestAlarm {
                 e.printStackTrace();
             }
         }
+    }
+
+
+
+    public static void main(String[] args) throws SQLException {
+        TestAlarm testAlarm = new TestAlarm();
+
+        testAlarm.testGetAlarm();
 
 
     }

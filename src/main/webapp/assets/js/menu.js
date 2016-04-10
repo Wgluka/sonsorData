@@ -20,7 +20,88 @@ $(document).ready(function(){
             alert('Error : ' + e);
         }
     });
+
+    $("#alarm_note").click(function(){
+
+        console.log("click ");
+
+        //判断当前的状态是否有效
+        var chooce = $("#tab_data").text();
+        //console.log(chooce);
+        if(chooce == undefined || chooce == '')
+            return ;
+console.log(chooce);
+        //判断是否需要加载警报界面
+        var isAlarming = $("#" + $("#menus").attr("key")).attr("alarming");
+        if(!isAlarming){
+            return ;
+        }
+
+        //加载警报界面
+
+        var tab_alarm = $("#tab_data").html();
+        //console.log("alarming          sss" + tab_alarm);
+        $("#tab_alarm").html(tab_alarm + "警报处理");
+
+        //console.log("jingbao     jjj");
+
+        $("#Sensor_alarm").load("alarm.html",function(){
+            //console.log("加载完成");
+
+            var sensorno = $("#menus").attr("key");
+            if(sensorno == 0)
+                return ;
+
+            console.log("异步操作开始执行   jj");
+
+            //异步加载警报信息
+            $.ajax({
+                type: 'post',
+                url: 'getAlarmDataAlarmAction.action',
+                data: "sensorno=" + sensorno + "&userAction=" + "&userName=",
+                success:function(res){
+                    console.log("成功执行异步      jj");
+                    console.log(res);
+                    var re = eval("(" + res + ")");
+                    console.log(re);
+
+                    displayStatus(re);
+                },
+                error:function(e){
+                    console.log("执行异步失败      jj");
+                }
+            })
+        });
+        //console.log("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj");
+
+        //console.log("tab_data :  " + $("#tab_data").text());
+        //var key = $("#menus").attr("key");
+        // console.log(key);
+        //var color = $("#" + $("#menus").attr("key")).attr("alarming");
+        //console.log(" color : " + color);
+        //if($("#")){
+        //    console.log("1111");
+        //}
+    });
 });
+
+function displayStatus(data){
+    if(data == undefined)
+        return ;
+     var status = data.alarmStatus;
+    if(status == undefined || status == 0)
+        return ;
+
+    var dataArray = status.split(",");
+
+    console.info(dataArray);
+
+    //将状态信息显示到界面中
+    var length = dataArray.length;
+    for(var i = 0; i < length ; ++i){
+        $("#sensor" + dataArray[i]).attr("checked" ,true);
+    }
+}
 
 function optionMenu(menus){
 
@@ -71,11 +152,13 @@ function optionMenu(menus){
             var third_child = document.createElement("li");
 
             //设置警告
-            if(sensorIsAlarm(second_childs_key[j],alarmData))
+            if(sensorIsAlarm(second_childs_key[j],alarmData)) {
                 third_child.innerHTML = "<a href=\"#\"><i class=\"fa fa-car\"></i><span class=\"text\" style=\"color: red\">" +
-                  second_childs_name[j]
-                  + "</span></a>";
-            else
+                    second_childs_name[j]
+                    + "</span></a>";
+
+                third_child.setAttribute("alarming","true");
+            } else
                 third_child.innerHTML = "<a href=\"#\"><i class=\"fa fa-car\"></i><span class=\"text\">" +
                     second_childs_name[j]
                     + "</span></a>";
@@ -85,10 +168,21 @@ function optionMenu(menus){
 
             third_child.onclick = function(){
                 $("#menus").attr("key",this.getAttribute("id"));
+                console.log(this.getAttribute("key"));
 
-                $("#tabs").load("sensordemo.html",{id: second_childs_key[j]}, function(){
+                //添加标签头名称
+                $("#tab_data").html(this.getAttribute("key"));
+
+                //加载页面
+                $("#Sensor_tab").load("sensordemo.html",{id: second_childs_key[j]}, function(){
+
                     $("#sensorno").val($("#menus").attr("key"));
                 });
+
+                //$("#tabs").load("sensordemo.html",{id: second_childs_key[j]}, function(){
+                //
+                //    $("#sensorno").val($("#menus").attr("key"));
+                //});
             };
 
             second_childs_container.appendChild(third_child);

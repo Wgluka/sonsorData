@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Alarm </title>
+
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="css/bootstrap-theme.min.css" rel="stylesheet">-->
+    <link href="assets/css/style.min.css" rel="stylesheet">
+    <link href="assets/css/docs.min.css" rel="stylesheet">
+
+    <!--<style>-->
+        <!--.row{-->
+            <!--display: -webkit-box;-->
+            <!--display: -webkit-flex;-->
+            <!--display: -ms-flexbox;-->
+            <!--display:         flex;-->
+            <!--flex-wrap: wrap;-->
+        <!--}-->
+    <!--</style>-->
+
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row show-grid">
+        <div class="col-md-8">
+            <h5><strong>警报处理</strong></h5>
+            <div class="row show-grid">
+                <div class="col-md-6">
+                    <div class="panel-body">
+                        <ul>
+                            <div class="input-group">
+                        	    <span>
+                            	    User Actions
+                                </span>
+                                <br>
+                           <textarea id="actions" rows="6"  cols="40" maxlength="200" placeholder="1111">
+                           </textarea>
+                            </div>
+                        </ul>
+                        <br>
+                        <ul>
+                            <div class="input-group">
+                        	    <span>
+                            	    Acknowledged by:
+                                </span>
+                                <br>
+                                <input id="user" type="text" placeholder="Admin User">
+                            </div>
+                        </ul>
+                        <br>
+                        <ul>
+                            <input type="button" class="btn btn-warning" value="Acknowledge" id="Acknowledge">
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!--<div class="panel panel-default">-->
+                    <div class="panel-heading">
+                        <h4><strong>Alarm Status</strong></h4>
+                    </div>
+                    <div class="panel-body" style="padding-left: 60px">
+                        <div class="row">
+                            <strong>Templateure</strong>
+                                <table style="width: 90%; border-style: dotted;border-width: 0.1px; border-color: rgba(86,61,124,.15); ">
+
+                                   <tr>
+                                       <td style="width: 50%"><input id="sensor1" type="checkbox" disabled="true" value="1">Low Range Alarm</td>
+                                       <td><input id="sensor2" type="checkbox" disabled="true" value="1">High Range Alarm</td>
+                                   </tr>
+                                    <tr>
+                                        <td><input id="sensor3" type="checkbox" disabled="true" value="1">Low Alarm</td>
+                                        <td><input id="sensor4" type="checkbox" disabled="true" value="1">High Alarm3</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input id="sensor5" type="checkbox" disabled="true" value="1">Rate of Change Alarm4</td>
+                                    </tr>
+                                </table>
+                        </div>
+                        <br>
+                        <div class="row">
+                                <strong>Humidity</strong>
+                            <table style="width: 90%; border-style: dotted;border-width: 0.1px; border-color: rgba(86,61,124,.15); ">
+
+                                <tr>
+                                    <td style="width: 50%"><input id="sensor6" type="checkbox" disabled="true" value="1">Low Range Alarm</td>
+                                    <td><input id="sensor7" type="checkbox" disabled="true" value="1">High Range Alarm</td>
+                                </tr>
+                                <tr>
+                                    <td><input id="sensor8" type="checkbox" disabled="true" value="1">Low Alarm</td>
+                                    <td><input id="sensor9" type="checkbox" disabled="true" value="1">High Alarm</td>
+                                </tr>
+                                <tr>
+                                    <td><input id="sensor10" type="checkbox" disabled="true" value="1">Rate of Change Alarm</td>
+                                </tr>
+                            </table>
+                            </div>
+                        <br>
+                        <div class="row">
+                                <strong>Others</strong>
+                            <table style="width: 90%; border-style: dotted;border-width: 0.1px; border-color: rgba(86,61,124,.15); ">
+
+                                <tr>
+                                    <td style="width: 50%"><input id="sensor11" type="checkbox" disabled="true" value="1">Low Battery Alarm</td>
+                                    <td><input id="sensor12" type="checkbox" disabled="true" value="1">Digital Alarm1</td>
+                                </tr>
+                                <tr>
+                                    <td><input id="sensor13" type="checkbox" disabled="true" value="1">Elapsed Time Alarm4</td>
+                                </tr>
+                            </table>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="assets/js/jquery-2.1.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/alarm.js"></script>
+
+</body>
+</html>

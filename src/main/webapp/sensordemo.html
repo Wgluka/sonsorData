@@ -12,6 +12,8 @@
     <script src="js/statistic.js"></script>
     <script src="js/easyui-lang-zh_CN.js"></script>
 
+    <!--<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="assets/css/style.min.css">-->
     <link rel="stylesheet" type="text/css" href="themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="themes/icon.css">
     <link rel="stylesheet" type="text/css" href="css/demo.css">
@@ -44,7 +46,8 @@
     <div><input type="hidden" id="sensorno" value="0"/></div>
     <div id="form">
         <form>
-            <table>
+            <!--<div>-->
+              <table>
                 <tr>
                     <td>查询日期 ：</td>
                     <td><input class="easyui-datebox" id="datefield"
@@ -59,33 +62,27 @@
                             <option value="quarter">一季度内</option>
                         </select>
                     </td>
-                    <!--class="button button-myfont button-primary button-pill button-small"-->
                     <td><input type="button" value="查询"
                                class="button button-myfont button-primary button-pill button-small"
                                onclick="doAjaxdemo();"/>
                     </td>
                 <tr>
-                <!--class="button button-myfont button-primary button-rounded button-small"-->
                     <td><input type="button" value="向前查询"
                                class="button button-myfont button-primary button-rounded button-small"
                                onclick="doQueryPrev();"/>
                     </td>
-                <!--class="button button-myfont button-primary button-rounded button-small"-->
                     <td><input type="button" value="向后查询"
                                class="button button-myfont button-primary button-rounded button-small"
                                onclick="doQueryNext();"/>
                     </td>
-                <!--class="button button-myfont button-primary button-rounded button-small"-->
                     <td><input type="button" value="最初数据"
                                class="button button-myfont button-primary button-rounded button-small"
                                onclick="doAjaxHead();"/>
                     </td>
-                <!--class="button button-myfont button-primary button-rounded button-small"-->
                     <td><input type="button" value="最新数据"
                                class="button button-myfont button-primary button-rounded button-small"
                                onclick="doAjaxTail();"/>
                     </td>
-                <!--class="button button-myfont button-primary button-pill button-small"-->
                     <td><input type="button" value="统计"
                                class="button button-myfont button-primary button-pill button-small"
                                onclick="doMonthStatictis();"/>
@@ -93,6 +90,17 @@
                 </tr>
                 </tr>
             </table>
+            <!--</div>-->
+            <!--<div style="height: 100px; width: 50px; position: relative; right: 50px;">-->
+                <!--<li style="position: absolute; padding-right: 50px;" class="visible-lg visible-md">-->
+                    <!--<a href="#">-->
+                        <!--<i class="fa fa-bell-o">-->
+
+                        <!--</i>-->
+                    <!--<span class="badge">!</span>-->
+                    <!--</a>-->
+                <!--</li>-->
+            <!--</div>-->
         </form>
     </div>
 </div>

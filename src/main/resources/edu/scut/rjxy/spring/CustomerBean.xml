@@ -10,13 +10,26 @@
 		<property name="sensorService" ref="sensorService" />
 	</bean>
 
-
 	<bean id="sensorService" class="edu.scut.rjxy.service.impl.SensorServiceImpl">
 		<property name="sensorDAO" ref="sensorDAO"></property>
+	</bean>
+
+	<bean id="alarmAction" class="edu.scut.rjxy.action.AlarmAction">
+		<property name="alarmService" ref="alarmService"></property>
+	</bean>
+
+	<bean id="alarmService" class="edu.scut.rjxy.service.impl.AlarmServiceImpl">
+		<property name="alarmDao" ref="alarmDao"></property>
+	</bean>
+
+	<bean id="alarmDao" class="edu.scut.rjxy.dao.impl.AlarmDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 
 	<bean id="sensorDAO" class="edu.scut.rjxy.dao.impl.SensorDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+
+
 
 </beans>

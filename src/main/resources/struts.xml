@@ -20,5 +20,14 @@
 			</result>
 		</action>
 
+		<action name="*AlarmAction" class="edu.scut.rjxy.action.AlarmAction" method="{1}">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="fail" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
 	</package>
 </struts>
