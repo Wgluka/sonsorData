@@ -2,61 +2,6 @@
  * Created by yukai on 2016/4/9.
  */
 $(document).ready(function(){
-   //$("#alarm_note").click(function(){
-   //
-   //    //判断当前的状态是否有效
-   //    var chooce = $("#tab_data").text();
-   //    //console.log(chooce);
-   //    if(chooce == undefined || chooce == '')
-   //         return ;
-   //
-   //    //判断是否需要加载警报界面
-   //    var isAlarming = $("#" + $("#menus").attr("key")).attr("alarming");
-   //    if(!isAlarming){
-   //        return ;
-   //    }
-   //
-   //    //加载警报界面
-   //
-   //    var tab_alarm = $("#tab_data").html();
-   //    //console.log("alarming          sss" + tab_alarm);
-   //    $("#tab_alarm").html(tab_alarm + "警报处理");
-   //
-   //    //console.log("jingbao     jjj");
-   //
-   //    $("#Sensor_alarm").load("alarm.html",function(){
-   //        //console.log("加载完成");
-   //
-   //        var sensorno = $("#menus").attr("key");
-   //        if(sensorno == 0)
-   //             return ;
-   //
-   //        console.log("异步操作开始执行   jj");
-   //
-   //        //异步加载警报信息
-   //        $.ajax({
-   //            type: 'post',
-   //            url: 'getAlarmDataAlarmAction.action',
-   //            data: "sensorno=" + sensorno + "&userAction=" + "&userName=",
-   //            success:function(res){
-   //                 console.log("成功执行异步      jj");
-   //            },
-   //            error:function(e){
-   //                console.log("执行异步失败      jj");
-   //            }
-   //        })
-   //    });
-   //    //console.log("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj");
-   //
-   //    //console.log("tab_data :  " + $("#tab_data").text());
-   //    //var key = $("#menus").attr("key");
-   //    // console.log(key);
-   //    //var color = $("#" + $("#menus").attr("key")).attr("alarming");
-   //    //console.log(" color : " + color);
-   //    //if($("#")){
-   //    //    console.log("1111");
-   //    //}
-   //});
 
     $("#Acknowledge").click(function(){
 
@@ -98,15 +43,39 @@ $(document).ready(function(){
                  var isok = re.clearResult;
 
                 console.log(isok);
-                if(!isok){
+                if(!isok || isok == "false"){
                     //失败清理之后的显示信息
-
+                    alert("操作失败");
 
                     return ;
                 }
 
-                //成功清理之后的显示信息
+                //成功清理之后应该将页面清除
+                $("#tab_alarm").html('');
+                $("#Sensor_alarm").html('');
 
+                //$("#tab_alarm").html("");
+                //$("#tab_alarm").remove();
+                //$("#tab_alarm")
+                //$("#Sensor_alarm").html("");
+                //$("#Sensor_alarm").remove();
+                //$("#Sensor_tab").attr("class","active");
+                $("#" + $("#menus").attr("key")).attr("alarming" , false);
+                $("#alarm_note_color").attr("style","color: rgb(132,135,136)");
+                $("#" + $("#menus").attr("key") + " " + "span").attr("style","color: rgb(132,135,136)");
+                console.info("qing li wan cheng le color black");
+
+                //页面跳转
+                //$("#tab_data").css("display","block");
+                //$('#tab_data').tab('show');
+                //$("#Sensor_tab").attr("class","active");
+
+                //模拟点击事件
+                $("#tab_data").trigger("click");
+
+
+                console.log("tab");
+                //$("#tab_data").tab();
                 return ;
 
             },

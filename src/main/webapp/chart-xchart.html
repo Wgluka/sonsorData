@@ -34,14 +34,16 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- jquery必须在menu之前 -->
     <script src="assets/js/jquery-2.1.1.min.js"></script>
-    <script src="assets/js/menu.js"></script>
     <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/plugins/d3/d3.min.js"></script>
     <script src="assets/plugins/jquery-ui/js/jquery-ui-1.10.4.min.js"></script>
-    <script src="assets/js/SmoothScroll.js"></script>
     <script src="assets/js/jquery.mmenu.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/tab.js"></script>
+    <script src="assets/js/menu.js"></script>
+    <script src="assets/plugins/d3/d3.min.js"></script>
+    <script src="assets/js/SmoothScroll.js"></script>
     <script src="assets/js/core.min.js"></script>
 
 </head>
@@ -59,47 +61,15 @@
             <li class="visible-xs visible-sm"><a href="#" id="sidebar-menu"><i
                     class="fa fa-navicon"></i></a></li>
         </ul>
-
-
-        <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown visible-md visible-lg" id="alarm_note">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i>
-                    <!--<span class="badge">3</span>-->
-                </a>
-                <!--<ul class="dropdown-menu">-->
-                    <!--<li class="dropdown-menu-header">-->
-                        <!--<strong>Notifications</strong>-->
-                        <!--<div class="progress thin">-->
-                            <!--<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="30"-->
-                                 <!--aria-valuemin="0" aria-valuemax="100" style="width: 30%">-->
-                                <!--<span class="sr-only">30% Complete (success)</span>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</li>-->
-                    <!--<li class="clearfix">-->
-                        <!--<i class="fa fa-comment"></i>-->
-                        <!--<a href="page-activity.html" class="notification-user"> Sharon Rose </a>-->
-                        <!--<span class="notification-action"> replied to your </span>-->
-                        <!--<a href="page-activity.html" class="notification-link"> comment</a>-->
-                    <!--</li>-->
-                    <!--<li class="dropdown-menu-footer text-center">-->
-                        <!--<a href="page-activity.html">View all notification</a>-->
-                    <!--</li>-->
-                <!--</ul>-->
-            </li>
-        </ul>
-
     </div>
-
 </div>
 <!-- end: Header -->
 
 <div class="container-fluid content">
 
     <div class="row">
-
-        <!-- start: Main Menu -->
-        <div class="sidebar ">
+            <!-- start: Main Menu -->
+            <div class="sidebar ">
             <div class="sidebar-collapse">
                 <div class="sidebar-header t-center">
                     <span style="text-align: center">
@@ -120,42 +90,55 @@
             </div>
         </div>
 
-        <!-- end: Main Menu -->
+            <!-- end: Main Menu -->
 
-        <!-- start: Content -->
-        <div class="main ">
+            <!-- start: Content -->
+            <div class="main ">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header"><i class="fa fa-retweet"></i>传感器数据</h3>
-                </div>
-            </div>
+                    <div class="page-header" style="float:left; width: 90%">
+                        <h4><i class="fa fa-retweet"></i>传感器数据</h4>
+                        <!--<ul class="">-->
 
-            <div style="width: 100%;">
+                        <!--</ul>-->
+                    </div>
+                    <div class="page-header" style="float: right; width: 5%;">
+                        <li class="dropdown visible-md visible-lg" style="float: right;" id="alarm_note">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-bell-o" id="alarm_note_color"></i>
+                                <!--<span class="badge">3</span>-->
+                            </a>
+                        </li>
+                    </div>
+                </div>
+
+                <div>
                 <ul class="nav nav-tabs" id="tab">
                     <!-- 放置标签头  -->
-                    <li>
-                        <a href="#Sensor_tab" data-toggle="tab" id="tab_data"></a>
+                    <li role="presentation">
+                        <a href="#Sensor_tab" data-toggle="tab" id="tab_data" role="tab"></a>
                     </li>
-                    <li>
-                        <a href="#Sensor_alarm" data-toggle="tab" id="tab_alarm"></a>
+                    <li role="presentation">
+                        <a href="#Sensor_alarm" data-toggle="tab" id="tab_alarm" role="tab"></a>
                     </li>
                 </ul>
-
-                <div class="tab-content" id="tabs">
+                <!--id="tabs"-->
+                <div class="tab-content">
                     <!-- 放置标签体 -->
-                    <div class="tab-pane active" id="Sensor_tab">
+                    <div role="tabpanel" class="tab-pane active" id="Sensor_tab">
 
                     </div>
-                    <div class="tab-pane" id="Sensor_alarm">
+                    <div role="tabpanel" class="tab-pane" id="Sensor_alarm">
 
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
         <!-- end: Content -->
         <br><br><br>
         </div>
-    </div>
+        </div>
+</div>
 
     <!-- start: JavaScript-->
     <!--[if !IE]>-->
@@ -202,9 +185,6 @@
     <!--<script src="assets/js/pages/charts-xcharts.js"></script>-->
 
     <!-- end: JavaScript-->
-
-
-
 
 </body>
 </html>

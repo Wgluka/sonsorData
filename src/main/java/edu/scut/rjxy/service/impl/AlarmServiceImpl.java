@@ -47,21 +47,27 @@ public class AlarmServiceImpl implements AlarmService {
         boolean isok = false;
         Map map = new HashMap<String,String>();
 
-        isok = alarmDao.updateSensorAlarm(sensorno);
-
-        if(!isok){
-            map.put("clearResult","false");
-            return map;
-        }
-
-        isok = alarmDao.insertAlarmNote(sensorno,description,noteBy);
-
-        if(!isok){
-            map.put("clearResult","false");
-            return map;
-        }
-
-        map.put("clearResult","true");
+        //测试用
+        map.put("clearResult","false");
         return map;
+
+//        isok = alarmDao.insertAlarmNote(sensorno,description,noteBy);
+//
+//        if(!isok){
+//            map.put("clearResult","false");
+//            return map;
+//        }
+//
+//        isok = alarmDao.updateSensorAlarm(sensorno);
+//
+//        logger.debug("isok               isok     " + isok);
+//
+//        if(!isok){
+//            map.put("clearResult","false");
+//            return map;
+//        }
+//
+//        map.put("clearResult","true");
+//        return map;
     }
 }

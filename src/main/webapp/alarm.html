@@ -6,31 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Alarm </title>
 
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="assets/css/bootstrap.min.css" rel="stylesheet">-->
     <!--<link href="css/bootstrap-theme.min.css" rel="stylesheet">-->
-    <link href="assets/css/style.min.css" rel="stylesheet">
+    <!--<link href="assets/css/style.min.css" rel="stylesheet">-->
     <link href="assets/css/docs.min.css" rel="stylesheet">
 
-    <!--<style>-->
-        <!--.row{-->
-            <!--display: -webkit-box;-->
-            <!--display: -webkit-flex;-->
-            <!--display: -ms-flexbox;-->
-            <!--display:         flex;-->
-            <!--flex-wrap: wrap;-->
-        <!--}-->
-    <!--</style>-->
+    <style>
+        .row1{
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display:         flex;
+            flex-wrap: wrap;
+        }
+    </style>
 
 </head>
 
 <body>
 <div class="container-fluid">
     <div class="row show-grid">
-        <div class="col-md-8">
+        <div class="col-md-8" style="width: 100%;">
             <h5><strong>警报处理</strong></h5>
-            <div class="row show-grid">
+            <div class="row1 show-grid">
                 <div class="col-md-6">
-                    <div class="panel-body">
+                    <div class="panel-body" style="background-color: rgba(86,61,124,.1);">
+                        <br>
                         <ul>
                             <div class="input-group">
                         	    <span>
@@ -52,19 +53,21 @@
                             </div>
                         </ul>
                         <br>
+                        <br>
                         <ul>
                             <input type="button" class="btn btn-warning" value="Acknowledge" id="Acknowledge">
                         </ul>
-
+                        <br>
+                        <br>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <!--<div class="panel panel-default">-->
                     <div class="panel-heading">
-                        <h4><strong>Alarm Status</strong></h4>
+                        <h5><strong>Alarm Status</strong></h5>
                     </div>
-                    <div class="panel-body" style="padding-left: 60px">
-                        <div class="row">
+                    <div class="panel-body" style="background-color: rgba(86,61,124,.1); padding-left: 60px">
+                        <div class="row1">
                             <strong>Templateure</strong>
                                 <table style="width: 90%; border-style: dotted;border-width: 0.1px; border-color: rgba(86,61,124,.15); ">
 
@@ -82,7 +85,7 @@
                                 </table>
                         </div>
                         <br>
-                        <div class="row">
+                        <div class="row1">
                                 <strong>Humidity</strong>
                             <table style="width: 90%; border-style: dotted;border-width: 0.1px; border-color: rgba(86,61,124,.15); ">
 
@@ -100,7 +103,7 @@
                             </table>
                             </div>
                         <br>
-                        <div class="row">
+                        <div class="row1">
                                 <strong>Others</strong>
                             <table style="width: 90%; border-style: dotted;border-width: 0.1px; border-color: rgba(86,61,124,.15); ">
 
@@ -113,6 +116,7 @@
                                 </tr>
                             </table>
                             </div>
+                        <br>
                     </div>
                 </div>
             </div>

@@ -33,9 +33,11 @@ $(document).ready(function(){
 console.log(chooce);
         //判断是否需要加载警报界面
         var isAlarming = $("#" + $("#menus").attr("key")).attr("alarming");
-        if(!isAlarming){
+        if(isAlarming == undefined || isAlarming == "false"){
             return ;
         }
+
+        console.info("over");
 
         //加载警报界面
 
@@ -43,16 +45,21 @@ console.log(chooce);
         //console.log("alarming          sss" + tab_alarm);
         $("#tab_alarm").html(tab_alarm + "警报处理");
 
-        //console.log("jingbao     jjj");
+        console.log("jingbao     jjj");
 
         $("#Sensor_alarm").load("alarm.html",function(){
-            //console.log("加载完成");
+            console.log("加载完成");
+
+            //清理textarea
+            $("#actions").val('');
 
             var sensorno = $("#menus").attr("key");
             if(sensorno == 0)
                 return ;
 
             console.log("异步操作开始执行   jj");
+
+            $("#tab_alarm").trigger("click");
 
             //异步加载警报信息
             $.ajax({
@@ -66,6 +73,24 @@ console.log(chooce);
                     console.log(re);
 
                     displayStatus(re);
+
+
+
+                    //$("#tab a:last").tab('show');
+
+                    //下面一行代码会导致警报界面一直存在
+                    //$("#Sensor_alarm").attr("class","active");
+
+                    //<script>
+
+                        //$('#tab a:last').tab('show');//初始化显示哪个tab
+
+                        //$('#tab a').click(function (e) {
+                        //    e.preventDefault();//阻止a链接的跳转行为
+                        //    $(this).tab('show');//显示当前选中的链接及关联的content
+                        //});
+                    //})
+                    //</script>
                 },
                 error:function(e){
                     console.log("执行异步失败      jj");
@@ -148,20 +173,24 @@ function optionMenu(menus){
 
         var seconde_childs_length = second_childs_name.length;
 
-        for(var j = 0; j < seconde_childs_length; ++j){
+        for(var j = 0; j < seconde_childs_length; ++j) {
             var third_child = document.createElement("li");
 
             //设置警告
-            if(sensorIsAlarm(second_childs_key[j],alarmData)) {
+            if (sensorIsAlarm(second_childs_key[j], alarmData)) {
                 third_child.innerHTML = "<a href=\"#\"><i class=\"fa fa-car\"></i><span class=\"text\" style=\"color: red\">" +
                     second_childs_name[j]
                     + "</span></a>";
 
-                third_child.setAttribute("alarming","true");
-            } else
-                third_child.innerHTML = "<a href=\"#\"><i class=\"fa fa-car\"></i><span class=\"text\">" +
-                    second_childs_name[j]
-                    + "</span></a>";
+                third_child.setAttribute("alarming", "true");
+            } else {
+
+            third_child.innerHTML = "<a href=\"#\"><i class=\"fa fa-car\"></i><span class=\"text\">" +
+                second_childs_name[j]
+                + "</span></a>";
+
+                third_child.setAttribute("alarming", "false");
+             }
 
             third_child.setAttribute("id",second_childs_key[j]);
             third_child.setAttribute("key",second_childs_name[j]);
@@ -173,18 +202,32 @@ function optionMenu(menus){
                 //添加标签头名称
                 $("#tab_data").html(this.getAttribute("key"));
 
+                $("#tab_data").trigger("click");
+                //,{id: second_childs_key[j]}
                 //加载页面
-                $("#Sensor_tab").load("sensordemo.html",{id: second_childs_key[j]}, function(){
+                $("#Sensor_tab").load("sensordemo.html", function(){
+                    //$("#tab_alarm").remove();
+                    //$("#Sensor_alarm").remove();
+
+                    $("#tab_alarm").html('');
+                    $("#Sensor_alarm").html('');
+
+
 
                     $("#sensorno").val($("#menus").attr("key"));
+
+                    //设置警钟的颜色
+                    if( $("#" + $("#menus").attr("key")).attr("alarming") == "true"){
+                        $("#alarm_note_color").attr("style","color: red");
+                        console.info("red");
+                    }else {
+                        $("#alarm_note_color").attr("style","color: rgb(132,135,136)");
+                    }
+
+
+
                 });
-
-                //$("#tabs").load("sensordemo.html",{id: second_childs_key[j]}, function(){
-                //
-                //    $("#sensorno").val($("#menus").attr("key"));
-                //});
             };
-
             second_childs_container.appendChild(third_child);
         }
     }

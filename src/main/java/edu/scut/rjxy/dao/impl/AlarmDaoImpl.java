@@ -39,6 +39,9 @@ public class AlarmDaoImpl extends HibernateDaoSupport implements AlarmDao {
         SQLQuery query = this.getSession().createSQLQuery(sql);
         query.setInteger("sensorno",sensorno);
         int result = query.executeUpdate();
+
+        logger.debug("result               result number :     " + result);
+
         return result == 0 ? false : true ;
     }
 
@@ -52,7 +55,11 @@ public class AlarmDaoImpl extends HibernateDaoSupport implements AlarmDao {
     }
 
     public boolean insertAlarmNote(int sensorno, String description, String noteBy) {
+
+        logger.debug("insert   ");
         List<Integer> list = getAlarmLogId(sensorno);
+
+        logger.debug("list           " + list.size());
 
         if( list == null || list.size() == 0)
             return false;

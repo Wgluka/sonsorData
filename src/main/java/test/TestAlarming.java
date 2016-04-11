@@ -108,6 +108,33 @@ public class TestAlarming{
             conn.close();
     }
 
+    public void testAlarmLogId() throws SQLException {
+
+        Connection conn = null;
+        Statement stmt = null;
+
+        String url = "jdbc:sqlserver://222.201.139.21:1435;databaseName=weblogger";
+        String user = "sa";
+        String pass = "Test123";
+
+        final String sql = "select idAlarmLog " +
+                "from webLogger.dbo.alarmlog " +
+                "where sensorSerialNo=" + 8 + " and alarmAcknowledged = 0";
+
+        conn = DriverManager.getConnection(url,user,pass);
+        stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+
+        while(result.next()){
+            System.out.println(result.getInt(1));
+        }
+
+        if(conn != null && !conn.isClosed())
+            conn.close();
+
+
+    }
+
 
    public static void main(String[] args) throws SQLException {
        TestAlarming test = new TestAlarming();
@@ -127,6 +154,8 @@ public class TestAlarming{
 //       System.out.println(new Timer().toString());
 //
        System.out.println(new Timestamp(new Date().getTime()));
+
+//       test.testAlarmLogId();
 
    }
 
