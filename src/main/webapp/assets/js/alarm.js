@@ -28,10 +28,18 @@ $(document).ready(function(){
 
         console.log("异步操作开始更新数据");
 
+        console.log("acknowledged 之前的 log id" + alarm_id);
+
+        if (alarm_id == undefined){
+            console.log("alarm_id 的值为空");
+            return ;
+        }
+
         $.ajax({
             type: 'post',
             url: 'updateAlarmDataAlarmAction.action',
-            data: "sensorno=" + sensorno + "&userAction=" + user_action + "&userName=" + user_name,
+            data: "sensorno=" + sensorno + "&userAction=" + user_action + "&userName=" + user_name +
+                        "&logId=" + alarm_id,
             success:function(res){
                 console.log("成功执行异步      ");
                 var re = eval("(" + res + ")");

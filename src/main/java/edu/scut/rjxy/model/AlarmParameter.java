@@ -9,6 +9,7 @@ public class AlarmParameter {
 //    private String alarmList;
     private String userAction;
     private String userName;
+    private String logId;
 
     public AlarmParameter() {
     }
@@ -45,13 +46,31 @@ public class AlarmParameter {
         this.userName = userName;
     }
 
+    public String getLogId() {
+        return logId;
+    }
+
+    public void setLogId(String logId) {
+        this.logId = logId;
+    }
+
     @Override
     public String toString() {
         return "AlarmParameter{" +
                 "sensorno=" + sensorno +
-//                ", alarmList='" + alarmList + '\'' +
                 ", userAction='" + userAction + '\'' +
                 ", userName='" + userName + '\'' +
+                ", logId='" + logId + '\'' +
                 '}';
     }
+
+    //    @Override
+//    public String toString() {
+//        return "AlarmParameter{" +
+//                "sensorno=" + sensorno +
+////                ", alarmList='" + alarmList + '\'' +
+//                ", userAction='" + userAction + '\'' +
+//                ", userName='" + userName + '\'' +
+//                '}';
+//    }
 }

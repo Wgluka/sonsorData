@@ -42,7 +42,7 @@ public class AlarmAction extends ActionSupport
     public String updateAlarmData(){
         LOGGER.debug("接受到了                          updateAla");
 
-        if(!isNullAlarmParamenter(alarmParameter)){
+        if(!isNullAlarmParamenter(alarmParameter) || alarmParameter.getLogId() == null){
             result = new JSONObject().put("clearResult","false").toString();
             return "fail";
         }
@@ -52,7 +52,8 @@ public class AlarmAction extends ActionSupport
 
         Map map = alarmService.clearAlarmStatus(alarmParameter.getSensorno(),
                 alarmParameter.getUserAction(),
-                alarmParameter.getUserName());
+                alarmParameter.getUserName(),
+                alarmParameter.getLogId());
 
         JSONObject jsonObject = JSONObject.fromObject(map);
         result = jsonObject.toString();

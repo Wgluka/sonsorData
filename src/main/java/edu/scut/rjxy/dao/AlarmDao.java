@@ -15,13 +15,13 @@ public interface AlarmDao {
     /**
      *
      */
-    public boolean updateSensorAlarm(int sensorno);
+    public boolean updateSensorAlarm(List<Integer> alarm_id_array);
 
-    public List getAlarmLogId(int sensorno);
+//    public List getAlarmLogId(int sensorno);
 
     /**
      *
      */
-    public boolean insertAlarmNote(int sensorno, String description, String noteBy);
+    public boolean insertAlarmNote(int sensorno, String description, String noteBy, List<Integer> list);
 
 }

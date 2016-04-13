@@ -2,6 +2,8 @@
  * Created by yukai on 2016/3/31.
  */
 
+var alarm_id;
+
 $(document).ready(function(){
     $.ajax({
         async: false,
@@ -65,7 +67,7 @@ console.log(chooce);
             $.ajax({
                 type: 'post',
                 url: 'getAlarmDataAlarmAction.action',
-                data: "sensorno=" + sensorno + "&userAction=" + "&userName=",
+                data: "sensorno=" + sensorno + "&userAction=" + "&userName=" + "&logId=",
                 success:function(res){
                     console.log("成功执行异步      jj");
                     console.log(res);
@@ -74,7 +76,10 @@ console.log(chooce);
 
                     displayStatus(re);
 
+                    //存放log的id
+                    alarm_id = re.LogId;
 
+                    console.info(alarm_id);
 
                     //$("#tab a:last").tab('show');
 
@@ -199,6 +204,10 @@ function optionMenu(menus){
                 $("#menus").attr("key",this.getAttribute("id"));
                 console.log(this.getAttribute("key"));
 
+                //先除去掉警报部分
+                $("#tab_alarm").html('');
+                $("#Sensor_alarm").html('');
+
                 //添加标签头名称
                 $("#tab_data").html(this.getAttribute("key"));
 
@@ -209,10 +218,8 @@ function optionMenu(menus){
                     //$("#tab_alarm").remove();
                     //$("#Sensor_alarm").remove();
 
-                    $("#tab_alarm").html('');
-                    $("#Sensor_alarm").html('');
-
-
+                    //$("#tab_alarm").html('');
+                    //$("#Sensor_alarm").html('');
 
                     $("#sensorno").val($("#menus").attr("key"));
 
@@ -223,8 +230,6 @@ function optionMenu(menus){
                     }else {
                         $("#alarm_note_color").attr("style","color: rgb(132,135,136)");
                     }
-
-
 
                 });
             };

@@ -11,5 +11,5 @@ public interface AlarmService {
     public Map getAlarmStatus(int sensorno);
 
     //执行alarm的清理工作
-    public Map clearAlarmStatus(int sensorno, String description, String noteBy);
+    public Map clearAlarmStatus(int sensorno, String description, String noteBy, String log_id_array);
 }

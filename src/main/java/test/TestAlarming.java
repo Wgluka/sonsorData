@@ -96,11 +96,11 @@ public class TestAlarming{
         conn = DriverManager.getConnection(url,user,pass);
         stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
-//        ResultSetMetaData resultSetMetaData = result.getMetaData();
-//        for(int i = 1; i <= resultSetMetaData.getColumnCount(); ++i){
-//            System.out.println(resultSetMetaData.getColumnClassName(i));
-//        }
-//
+        ResultSetMetaData resultSetMetaData = result.getMetaData();
+        for(int i = 1; i <= resultSetMetaData.getColumnCount(); ++i){
+            System.out.println(resultSetMetaData.getColumnClassName(i));
+        }
+
         while(result.next()){
             System.out.println(result.getString(2) + "     " + result.getString(3) + "     " + result.getString(4) + "    " + result.getString(5));
         }
@@ -131,8 +131,77 @@ public class TestAlarming{
 
         if(conn != null && !conn.isClosed())
             conn.close();
+    }
 
+    public void testInsertIntoAlarmLogNote() throws SQLException {
+        Connection conn = null;
+        Statement stmt = null;
 
+        String url = "jdbc:sqlserver://222.201.139.21:1435;databaseName=weblogger";
+        String user = "sa";
+        String pass = "Test123";
+
+        String sql = "insert into webLogger.dbo.alarmotes() values()";
+
+        conn = DriverManager.getConnection(url,user,pass);
+        stmt = conn.createStatement();
+
+        stmt.execute(sql);
+
+        if(conn != null && !conn.isClosed())
+            conn.close();
+    }
+
+    public void testcheckUpdateLog() throws SQLException {
+        Connection conn = null;
+        Statement stmt = null;
+
+        String url = "jdbc:sqlserver://222.201.139.21:1435;databaseName=weblogger";
+        String user = "sa";
+        String pass = "Test123";
+
+        String sql = "select * from  webLogger.dbo.alarmlog where idAlarmLog = 108";
+
+        conn = DriverManager.getConnection(url,user,pass);
+
+        stmt = conn.createStatement();
+
+        ResultSet resultSet = stmt.executeQuery(sql);
+
+        while(resultSet.next()){
+            System.out.println(resultSet.getInt(3));
+        }
+
+        if(conn != null && !conn.isClosed())
+            conn.close();
+
+    }
+
+    public void testInsertIntoDatabase() throws SQLException {
+        Connection conn = null;
+        Statement stmt = null;
+
+        String url = "jdbc:sqlserver://222.201.139.21:1435;databaseName=weblogger";
+        String user = "sa";
+        String pass = "Test123";
+
+        conn = DriverManager.getConnection(url,user,pass);
+
+        stmt = conn.createStatement();
+
+        String sql = "insert into webLogger.dbo.alarmnotes(noteDescription, noteEntryDateTime,idAlarmLog,noteBy)" +
+                " VALUES( 'wyk',SYSDATETIME(),8,'wyk')";
+
+        stmt.execute(sql);
+
+//        ResultSet resultSet = stmt.executeQuery(sql);
+//
+//        while(resultSet.next()){
+//            System.out.println();
+//        }
+
+        if(conn != null && !conn.isClosed())
+            conn.close();
     }
 
 
@@ -147,13 +216,15 @@ public class TestAlarming{
 
 //       test.testSqlIsOk(2);
 
+//       test.testcheckUpdateLog();
 
+test.testInsertIntoDatabase();
        test.testInsertNoteIsOk();
 
 //       System.out.println(new Date().getTime());
 //       System.out.println(new Timer().toString());
 //
-       System.out.println(new Timestamp(new Date().getTime()));
+//       System.out.println(new Timestamp(new Date().getTime()));
 
 //       test.testAlarmLogId();
 
