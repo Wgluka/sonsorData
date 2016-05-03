@@ -41,7 +41,6 @@ function doAjaxdemo() {
                         // 将数据变成echarts接手的option
                         var ores = eval("(" + res + ")");
                         var option = optionFactory(ores);
-                        // myChart.hedeLoading();
                         // 为echarts对象加载数据
                         myChart.setOption(option);
                     },
@@ -235,8 +234,7 @@ function optionFactory(res) {
             var array0 = adjustScope(max0,min0);
             max0 = array0[0];
             min0 = array0[1];
-            //min0 = min(result0);
-            //max0 = max(result0);
+
         }
 
         if (result1) {
@@ -247,8 +245,6 @@ function optionFactory(res) {
             max1 = array1[0];
             min1 = array1[1];
 
-            //min1 = min(result1);
-            //max1 = max(result1);
         }
 
         yAxis_data = [{
@@ -257,8 +253,6 @@ function optionFactory(res) {
             scale: true,
             min: min0,
             max: max0,
-            //min: 'dataMin' - 10,
-            //max: 'dataMax' + 10,
             axisLabel: {
                 //formatter: '{value} ' + res.unit0abbr
                 formatter: function(value){
@@ -271,8 +265,6 @@ function optionFactory(res) {
             scale: true,
             min: min1,
             max: max1,
-            //min: 'dataMin' - 10,
-            //max: 'dataMax' + 10,
             axisLabel: {
                 //formatter: '{value} ' + res.unit1abbr
                 formatter: function(value){
@@ -417,8 +409,6 @@ function optionFactory(res) {
             var array0 = adjustScope(max0,min0);
             max0 = array0[0];
             min0 = array0[1];
-            //min0 = min(result0);
-            //max0 = max(result0);
         }
 
         if (result1) {
@@ -428,8 +418,6 @@ function optionFactory(res) {
             var array1 = adjustScope(max1,min1);
             max1 = array1[0];
             min1 = array1[1];
-            //min1 = min(result1);
-            //max1 = max(result1);
         }
 
         if (result2) {
@@ -439,8 +427,6 @@ function optionFactory(res) {
             var array2 = adjustScope(max2,min2);
             max2 = array2[0];
             min2 = array2[1];
-            //min2 = min(result2);
-            //max2 = max(result2);
         }
 
         yAxis_data = [{
@@ -449,8 +435,6 @@ function optionFactory(res) {
             scale: true,
             min: min1,
             max: max1,
-            //min: 'dataMin' - 10,
-            //max: 'dataMax' + 10,
             axisLabel: {
                 //formatter: '{value} ' + res.unit1abbr
                 formatter: function(value){
@@ -463,8 +447,6 @@ function optionFactory(res) {
             scale: true,
             min: min0,
             max: max0,
-            //min: 'dataMin' - 10,
-            //max: 'dataMax' + 10,
             axisLabel: {
                 //formatter: '{value} ' + res.unit0abbr
                 formatter: function(value){
@@ -477,8 +459,6 @@ function optionFactory(res) {
             scale: true,
             min: min2,
             max: max2,
-            //min: 'dataMin' - 10,
-            //max: 'dataMax' + 10,
             axisLabel: {
                 //formatter: '{value} ' + res.unit2abbr
                 formatter: function(value){
@@ -557,8 +537,6 @@ function optionFactory(res) {
         var max3 = 0;
 
         if (result0) {
-            //min0 = min(result0);
-            //max0 = max(result0);
             min0 = findMin(result0);
             max0 = findMax(result0);
             var array0  = adjustScope(max0,min0);
@@ -574,8 +552,6 @@ function optionFactory(res) {
             var array1 = adjustScope(max1,min1);
             max1 = array1[0];
             min1 = array1[1];
-            //min1 = min(result1);
-            //max1 = max(result1);
         }
 
         if (result2) {
@@ -585,8 +561,6 @@ function optionFactory(res) {
             var array2 = adjustScope(max2,min2);
             max2 = array2[0];
             min2 = array2[1];
-            //min2 = min(result2);
-            //max2 = max(result2);
         }
 
         if (result3) {
@@ -596,8 +570,6 @@ function optionFactory(res) {
             var array3 = adjustScope(max3,min3);
             max3 = array3[0];
             min3 = array3[1];
-            //min3 = min(result3);
-            //max3 = max(result3);
         }
 
         yAxis_data = [{
@@ -606,8 +578,6 @@ function optionFactory(res) {
             scale: true,
             min: min0,
             max: max0,
-            //min: 'dataMin' - 10,
-            //max: 'dataMax' + 10,
             axisLabel: {
                 //formatter: '{value} ' + res.unit0abbr
                 formatter: function(value){
@@ -620,8 +590,6 @@ function optionFactory(res) {
             scale: true,
             min: min1,
             max: max1,
-            //min: 'dataMin' - 10,
-            //max: 'dataMax' + 10,
             axisLabel: {
                 //formatter: '{value} ' + res.unit1abbr
                 formatter: function(value){
@@ -634,8 +602,6 @@ function optionFactory(res) {
             scale: true,
             min: min2,
             max: max2,
-            //min: 'dataMin' - 10,
-            //max: 'dataMax' + 10,
             axisLabel: {
                 //formatter: '{value} ' + res.unit2abbr
                 formatter: function(value){
@@ -648,8 +614,6 @@ function optionFactory(res) {
             scale: true,
             min: min3,
             max: max3,
-            //min: 'dataMin' - 10,
-            //max: 'dataMax' + 10,
             axisLabel: {
                 //formatter: '{value} ' + res.unit3abbr
                 formatter: function(value){
@@ -702,8 +666,6 @@ function defaultOption() {
         yAxis: [{
             type: 'value',
             scale: true,
-            //min: 'dataMin' - 10,
-            //max: 'dataMax' + 10
         }],
         series: [{
             name: '-',

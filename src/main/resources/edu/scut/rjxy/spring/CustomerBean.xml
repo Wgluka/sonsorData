@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
  
 
 
@@ -29,6 +33,14 @@
 	<bean id="sensorDAO" class="edu.scut.rjxy.dao.impl.SensorDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+
+	<!--<bean id="jotm" class="org.springframework.transaction.jta.JotmFactoryBean"/>-->
+
+	<!--<bean id="txManager" class="org.springframework.transaction.jta.JtaTransactionManager">-->
+		<!--<property name="userTransaction" ref="jotm"/>-->
+	<!--</bean>-->
+
+	<!--<tx:annotation-driven transaction-manager="txManager"/>-->
 
 
 

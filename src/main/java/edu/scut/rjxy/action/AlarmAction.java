@@ -6,8 +6,6 @@ import edu.scut.rjxy.model.AlarmParameter;
 import edu.scut.rjxy.service.AlarmService;
 import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
-
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -41,7 +39,6 @@ public class AlarmAction extends ActionSupport
 
     public String updateAlarmData(){
         LOGGER.debug("接受到了                          updateAla");
-
         if(!isNullAlarmParamenter(alarmParameter) || alarmParameter.getLogId() == null){
             result = new JSONObject().put("clearResult","false").toString();
             return "fail";

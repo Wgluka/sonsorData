@@ -178,7 +178,7 @@ public class SensorServiceImpl implements SensorService {
     }
 
     public Map getStatictis(String sensorID, String beginTime, String endTime) {
-        {
+//        {
             Map<String, Object> map = new HashMap<String, Object>();
 
             // 元数据
@@ -225,7 +225,7 @@ public class SensorServiceImpl implements SensorService {
             map.put("statictisNo", statictisSensorData.size());
             map.put("channelNo", channelNo);
             return map;
-        }
+//        }
     }
 
     private String[] dealStaticResult(int channelNo, List<Object[]> items) {

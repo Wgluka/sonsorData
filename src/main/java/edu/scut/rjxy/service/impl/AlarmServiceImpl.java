@@ -3,6 +3,7 @@ package edu.scut.rjxy.service.impl;
 import edu.scut.rjxy.dao.AlarmDao;
 import edu.scut.rjxy.service.AlarmService;
 import org.apache.log4j.Logger;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,6 +13,7 @@ import java.util.Map;
 /**
  * Created by yukai on 2016/4/9.
  */
+@Transactional
 public class AlarmServiceImpl implements AlarmService {
 
     private static final Logger logger = Logger.getLogger(AlarmServiceImpl.class);
@@ -55,12 +57,6 @@ public class AlarmServiceImpl implements AlarmService {
         boolean isok = false;
         Map map = new HashMap<String,String>();
 
-//        //测试用
-//        map.put("clearResult","false");
-//        return map;
-
-
-        //需要添加事务管理
 
         String[] id_str = log_id_array.split(",");
         if(id_str == null || id_str.length == 0){

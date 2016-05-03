@@ -3,12 +3,12 @@
  */
 $(document).ready(function(){
 
-    $("#Acknowledge").click(function(){
+    $("#Acknowledge").click(function() {
 
         //var checkedlist;
         var sensorno = $("#menus").attr("key");
-        if(sensorno == 0)
-            return ;
+        if (sensorno == 0)
+            return;
 
         var user_action = $("#actions").val();
         var user_name = $("#user").val();
@@ -21,10 +21,14 @@ $(document).ready(function(){
         console.info("qing li zhi hou de user name " + user_name);
 
 
-        if(user_action == '')
+        if (user_action == '') {
             alert("请输入操作信息！");
-        if(user_name == '')
+            return ;
+        }
+        if(user_name == ''){
             alert("请输入操作人员的名称");
+            return ;
+        }
 
         console.log("异步操作开始更新数据");
 
@@ -84,6 +88,9 @@ $(document).ready(function(){
 
                 console.log("tab");
                 //$("#tab_data").tab();
+
+                alarm_id = undefined;
+
                 return ;
 
             },

@@ -7,52 +7,58 @@
 
     <script src="dist/echarts.js"></script>
     <script src="js/jquery-1.11.3.min.js"></script>
+    <!--<script src="assets/js/jquery-2.1.1.min.js"></script>-->
     <script src="js/jquery.easyui.min.js"></script>
-    <script src="js/sensor.js"></script>
     <script src="js/statistic.js"></script>
     <script src="js/easyui-lang-zh_CN.js"></script>
+    <script src="js/sensor.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
 
-    <!--<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">-->
-    <!--<link rel="stylesheet" type="text/css" href="assets/css/style.min.css">-->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.min.css">
     <link rel="stylesheet" type="text/css" href="themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="themes/icon.css">
     <link rel="stylesheet" type="text/css" href="css/demo.css">
     <link rel="stylesheet" type="text/css" href="css/buttons.css">
 
+
 </head>
 <body>
 <script type="text/javascript">
 //    如果要使用chart-xchart的话，需要删掉这一段
-    $(function () {
-        //解析url
-        var param = window.location.href;
-        //var reg = new RegExp("(^|&)" + param + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1);
-        var p = r.split("&");
-        var ary = new Array();
-        for (i = 0; i < p.length; i++) {
-            var s = p[i];
-            var t = s.split("=");
-            ary.push(t[1]);
-        }
-
-        var id = ary[0];
-
-//        console.info(id);
-        $("#sensorno").val(id);
-    });
+//    $(function () {
+//        //解析url
+//        var param = window.location.href;
+//        //var reg = new RegExp("(^|&)" + param + "=([^&]*)(&|$)");
+//        var r = window.location.search.substr(1);
+//        var p = r.split("&");
+//        var ary = new Array();
+//        for (i = 0; i < p.length; i++) {
+//            var s = p[i];
+//            var t = s.split("=");
+//            ary.push(t[1]);
+//        }
+//
+//        var id = ary[0];
+//
+//        $("#sensorno").val(id);
+//    });
 </script>
 <div>
     <div><input type="hidden" id="sensorno" value="0"/></div>
     <div id="form">
         <form>
-            <!--<div>-->
               <table>
                 <tr>
                     <td>查询日期 ：</td>
                     <td><input class="easyui-datebox" id="datefield"
                                data-options="formatter:myformatter,parser:myparser" required
                                data-options="validType:'md[\'10/11/2012\']'"></input></td>
+                    <!--<td>-->
+                        <!--<div class="input-group date form-date col-md-5" data-date="" data-date-form=""-->
+                    <!--</td>-->
                     <td>时间跨度 ：</td>
                     <td>
                         <select id="dategap">
@@ -90,17 +96,6 @@
                 </tr>
                 </tr>
             </table>
-            <!--</div>-->
-            <!--<div style="height: 100px; width: 50px; position: relative; right: 50px;">-->
-                <!--<li style="position: absolute; padding-right: 50px;" class="visible-lg visible-md">-->
-                    <!--<a href="#">-->
-                        <!--<i class="fa fa-bell-o">-->
-
-                        <!--</i>-->
-                    <!--<span class="badge">!</span>-->
-                    <!--</a>-->
-                <!--</li>-->
-            <!--</div>-->
         </form>
     </div>
 </div>

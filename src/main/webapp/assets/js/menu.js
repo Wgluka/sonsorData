@@ -5,6 +5,9 @@
 var alarm_id;
 
 $(document).ready(function(){
+    //$("#tab_alarm").onclick = function () {
+    //    console.log("alarm clicking");
+    //}
     $.ajax({
         async: false,
         type: 'post',
@@ -61,7 +64,8 @@ console.log(chooce);
 
             console.log("异步操作开始执行   jj");
 
-            $("#tab_alarm").trigger("click");
+            var e = jQuery.Event("click");
+            $("#tab_alarm").trigger(e);
 
             //异步加载警报信息
             $.ajax({
@@ -81,6 +85,11 @@ console.log(chooce);
 
                     console.info(alarm_id);
 
+                    //$("#tab_alarm").click();
+
+                    //$("#tab_alarm").trigger("click");
+                    console.log("click");
+
                     //$("#tab a:last").tab('show');
 
                     //下面一行代码会导致警报界面一直存在
@@ -98,6 +107,7 @@ console.log(chooce);
                     //</script>
                 },
                 error:function(e){
+
                     console.log("执行异步失败      jj");
                 }
             })
