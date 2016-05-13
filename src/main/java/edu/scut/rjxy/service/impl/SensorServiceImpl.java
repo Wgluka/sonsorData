@@ -6,6 +6,7 @@ import edu.scut.rjxy.model.SensorMeta;
 import edu.scut.rjxy.service.SensorService;
 import edu.scut.rjxy.utils.DateTimeConvert;
 import edu.scut.rjxy.utils.EnToCnUnits;
+import org.apache.commons.logging.Log;
 import org.apache.log4j.Logger;
 
 import java.util.Date;
@@ -314,8 +315,10 @@ public class SensorServiceImpl implements SensorService {
         String sonsorName = previous[3].toString() + ",";
         String sonsorKey = previous[2].toString() + ",";
 
+        LOG.debug("index sum " + menus.size());
         int firstMenuIdx = 0;
         for (int i = 1; i < menus.size(); i++) {
+            LOG.debug("index " + i);
 
             Object[] menu = menus.get(i);
             if (menu[0].equals(previous[0])) {
