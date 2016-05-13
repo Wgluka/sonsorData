@@ -141,6 +141,10 @@ public class SensorServiceImpl implements SensorService {
         String mainMenu = sensorDAO.getMainMenu();
         List<Long> alarm = sensorDAO.getAlarmAcknowledged();
         LOG.debug("主目录主干名称："+mainMenu);
+        for(int i = 0; i < menus.size(); ++i)
+            LOG.debug(menus.get(i));
+        for(int i = 0; i < alarm.size(); ++i)
+            LOG.debug(alarm.get(i));
         Map<String, Object> map = handleMenu(mainMenu, menus,alarm);
 
         return map;
@@ -322,11 +326,13 @@ public class SensorServiceImpl implements SensorService {
 
             Object[] menu = menus.get(i);
             if (menu[0].equals(previous[0])) {
+                LOG.debug("menu[0]");
                 // first second menu
                 sonsorName += menu[3].toString() + ",";
                 sonsorKey += menu[2].toString() + ",";
 
             } else {
+                LOG.debug("menu else");
                 // next first menu
                 firstMenu += menu[1].toString() + ",";
                 map.put("second_" + firstMenuIdx + "name", sonsorName.substring(0, sonsorName.length() - 1));
@@ -340,18 +346,25 @@ public class SensorServiceImpl implements SensorService {
 
             if (i == menus.size() - 1) {
                 // 末尾
+                LOG.debug("末尾");
 //                firstMenu += menu[1].toString();
                 map.put("second_" + firstMenuIdx + "name", sonsorName.substring(0, sonsorName.length() - 1));
                 map.put("second_" + firstMenuIdx + "key", sonsorKey.substring(0, sonsorKey.length() - 1));
             }
+            LOG.debug("index " + i + " over");
         }
 
         map.put("firstMenu", firstMenu.substring(0, firstMenu.length() - 1));
+
+        LOG.debug("map first:" + map);
+        LOG.debug("first Menu" + firstMenu);
 
         if (menus.size() == 1) {
             map.put("second_1name", sonsorName.substring(0, sonsorName.length() - 1));
             map.put("second_1key", sonsorKey.substring(0, sonsorKey.length() - 1));
         }
+
+        LOG.debug("map : " + map);
 
         StringBuffer alarmData = new StringBuffer();
         String Data = null;
@@ -360,7 +373,9 @@ public class SensorServiceImpl implements SensorService {
         if(alarm != null){
             alarmData.append(alarm.get(0));
             int length = alarm.size();
+            LOG.debug("length " + length);
             for(int i = 1; i < length; ++i){
+                LOG.debug("alarm index " + i);
                 alarmData.append("," + alarm.get(i));
             }
             Data = alarmData.toString();
