@@ -5,9 +5,7 @@
 var alarm_id;
 
 $(document).ready(function(){
-    //$("#tab_alarm").onclick = function () {
-    //    console.log("alarm clicking");
-    //}
+
     $.ajax({
         async: false,
         type: 'post',
@@ -17,43 +15,43 @@ $(document).ready(function(){
             var ores = eval("(" + res + ")");
 
             optionMenu(ores);
-            //alert(res);
-            //alert(ores);
-
         },
         error: function(e){
-            alert('Error : ' + e);
+            alert('Error : ' + "连接失败！");
         }
     });
 
     $("#alarm_note").click(function(){
 
-        console.log("click ");
+        //console.log("click ");
 
         //判断当前的状态是否有效
         var chooce = $("#tab_data").text();
         //console.log(chooce);
         if(chooce == undefined || chooce == '')
             return ;
-console.log(chooce);
+
+        //console.log(chooce);
+
         //判断是否需要加载警报界面
         var isAlarming = $("#" + $("#menus").attr("key")).attr("alarming");
         if(isAlarming == undefined || isAlarming == "false"){
             return ;
         }
 
-        console.info("over");
+        //console.info("over");
 
         //加载警报界面
-
         var tab_alarm = $("#tab_data").html();
-        //console.log("alarming          sss" + tab_alarm);
-        $("#tab_alarm").html(tab_alarm + "警报处理");
 
-        console.log("jingbao     jjj");
+        $("#tab_alarm").html(tab_alarm + "警报处理");
+        //tianjia
+        $("#tab_alarm").attr("href","#Sensor_alarm");
+
+        //console.log("jingbao     jjj");
 
         $("#Sensor_alarm").load("alarm.html",function(){
-            console.log("加载完成");
+            //console.log("加载完成");
 
             //清理textarea
             $("#actions").val('');
@@ -62,7 +60,7 @@ console.log(chooce);
             if(sensorno == 0)
                 return ;
 
-            console.log("异步操作开始执行   jj");
+            //console.log("异步操作开始执行   jj");
 
             var e = jQuery.Event("click");
             $("#tab_alarm").trigger(e);
@@ -73,55 +71,26 @@ console.log(chooce);
                 url: 'getAlarmDataAlarmAction.action',
                 data: "sensorno=" + sensorno + "&userAction=" + "&userName=" + "&logId=",
                 success:function(res){
-                    console.log("成功执行异步      jj");
-                    console.log(res);
+                    //console.log("成功执行异步      jj");
+                    //console.log(res);
                     var re = eval("(" + res + ")");
-                    console.log(re);
+                    //console.log(re);
 
                     displayStatus(re);
 
                     //存放log的id
                     alarm_id = re.LogId;
 
-                    console.info(alarm_id);
+                    //console.info(alarm_id);
 
-                    //$("#tab_alarm").click();
+                    //console.log("click");
 
-                    //$("#tab_alarm").trigger("click");
-                    console.log("click");
-
-                    //$("#tab a:last").tab('show');
-
-                    //下面一行代码会导致警报界面一直存在
-                    //$("#Sensor_alarm").attr("class","active");
-
-                    //<script>
-
-                        //$('#tab a:last').tab('show');//初始化显示哪个tab
-
-                        //$('#tab a').click(function (e) {
-                        //    e.preventDefault();//阻止a链接的跳转行为
-                        //    $(this).tab('show');//显示当前选中的链接及关联的content
-                        //});
-                    //})
-                    //</script>
                 },
                 error:function(e){
-
-                    console.log("执行异步失败      jj");
+                    console.log("警报加载失败");
                 }
             })
         });
-        //console.log("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj");
-
-        //console.log("tab_data :  " + $("#tab_data").text());
-        //var key = $("#menus").attr("key");
-        // console.log(key);
-        //var color = $("#" + $("#menus").attr("key")).attr("alarming");
-        //console.log(" color : " + color);
-        //if($("#")){
-        //    console.log("1111");
-        //}
     });
 });
 
@@ -134,7 +103,7 @@ function displayStatus(data){
 
     var dataArray = status.split(",");
 
-    console.info(dataArray);
+    //console.info(dataArray);
 
     //将状态信息显示到界面中
     var length = dataArray.length;
@@ -168,7 +137,6 @@ function optionMenu(menus){
             "</span>" +
             " <span class=\"fa fa-angle-down pull-right\"></span></a>";
 
-
         $("#menus").append(second_menu);
 
         //创建子节点的容器
@@ -177,14 +145,12 @@ function optionMenu(menus){
 
         second_menu.appendChild(second_childs_container);
 
-
         //创建子节点
         var second_child = "second_" + i + "name";
         var second_child_key = "second_" + i + "key";
 
         var second_childs_name = menus[second_child].split(",");
         var second_childs_key = menus[second_child_key].split(",");
-
 
         var seconde_childs_length = second_childs_name.length;
 
@@ -212,24 +178,21 @@ function optionMenu(menus){
 
             third_child.onclick = function(){
                 $("#menus").attr("key",this.getAttribute("id"));
-                console.log(this.getAttribute("key"));
+                //console.log(this.getAttribute("key"));
 
                 //先除去掉警报部分
                 $("#tab_alarm").html('');
                 $("#Sensor_alarm").html('');
 
+                $("#tab_alarm").attr("href","#");
+
                 //添加标签头名称
                 $("#tab_data").html(this.getAttribute("key"));
 
                 $("#tab_data").trigger("click");
-                //,{id: second_childs_key[j]}
+
                 //加载页面
                 $("#Sensor_tab").load("sensordemo.html", function(){
-                    //$("#tab_alarm").remove();
-                    //$("#Sensor_alarm").remove();
-
-                    //$("#tab_alarm").html('');
-                    //$("#Sensor_alarm").html('');
 
                     $("#sensorno").val($("#menus").attr("key"));
 
@@ -240,7 +203,6 @@ function optionMenu(menus){
                     }else {
                         $("#alarm_note_color").attr("style","color: rgb(132,135,136)");
                     }
-
                 });
             };
             second_childs_container.appendChild(third_child);

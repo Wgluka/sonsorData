@@ -28,7 +28,7 @@ public class AlarmServiceImpl implements AlarmService {
         List<Object[]> alarmStatus = alarmDao.getAlarmStatus(sensorno);
         Map map = new HashMap<String,String>();
 
-        logger.debug("getAlarm Status :   " + alarmStatus.size());
+//        logger.debug("getAlarm Status :   " + alarmStatus.size());
 
         if(alarmStatus == null || alarmStatus.size() == 0){
             map.put("alarmStatus","0");
@@ -48,7 +48,7 @@ public class AlarmServiceImpl implements AlarmService {
         map.put("LogId",id_buffer.toString());
         map.put("alarmStatus",buffer.toString());
 
-        logger.debug("获取alarm的种类service 返回值为" + map.toString());
+//        logger.debug("获取alarm的种类service 返回值为" + map.toString());
 
         return map;
     }
@@ -81,7 +81,7 @@ public class AlarmServiceImpl implements AlarmService {
         //要根据id进行更新
         isok = alarmDao.updateSensorAlarm(id_list);
 
-        logger.debug("isok               isok     " + isok);
+//        logger.debug("isok               isok     " + isok);
 
         if(!isok){
             map.put("clearResult","false");

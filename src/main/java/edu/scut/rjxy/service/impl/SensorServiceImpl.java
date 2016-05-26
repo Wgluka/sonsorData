@@ -35,10 +35,10 @@ public class SensorServiceImpl implements SensorService {
         Map<String, Object> map = new HashMap<String, Object>();
         List<Object[]> metaData = sensorDAO.querySensorMetaData(sensorID);
         int metaSum = metaData.size();
-        LOG.debug("元数据数目：" + metaSum);
+//        LOG.debug("元数据数目：" + metaSum);
         map.put("metaSum", metaSum);
         if (metaSum == 0) {
-            LOG.error("异常，元数据记录为空，metaSum = " + metaData);
+//            LOG.error("异常，元数据记录为空，metaSum = " + metaData);
             map.put("result0", "-");
             map.put("shaft", "-");
             return null;
@@ -141,10 +141,6 @@ public class SensorServiceImpl implements SensorService {
         String mainMenu = sensorDAO.getMainMenu();
         List<Long> alarm = sensorDAO.getAlarmAcknowledged();
         LOG.debug("主目录主干名称："+mainMenu);
-        for(int i = 0; i < menus.size(); ++i)
-            LOG.debug(menus.get(i));
-        for(int i = 0; i < alarm.size(); ++i)
-            LOG.debug(alarm.get(i));
         Map<String, Object> map = handleMenu(mainMenu, menus,alarm);
 
         return map;
@@ -370,7 +366,7 @@ public class SensorServiceImpl implements SensorService {
         String Data = null;
 
         //处理警报数据
-        if(alarm != null){
+        if(alarm != null && alarm.size() != 0){
             alarmData.append(alarm.get(0));
             int length = alarm.size();
             LOG.debug("length " + length);
@@ -388,18 +384,4 @@ public class SensorServiceImpl implements SensorService {
         LOG.debug("menu map(目录情况) :" + map);
         return map;
     }
-
-//    private final String[] convertMeta(List<String> metas){
-//        if(metas == null ||metas.size() == 0){
-//            return null;
-//        }
-//
-//        String[] metaData = new String[2*metas.size()];
-//        for(String meta:metas){
-//
-//        }
-//
-//
-//        return metaData;
-//    }
 }

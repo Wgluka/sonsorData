@@ -37,21 +37,21 @@
 
     <!-- jquery必须在menu之前 -->
     <!--<script src="assets/js/jquery-2.1.1.min.js"></script>-->
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="assets/plugins/jquery-ui/js/jquery-ui-1.10.4.min.js"></script>
-    <script src="assets/js/jquery.mmenu.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/tab.js"></script>
-    <script src="assets/js/menu.js"></script>
-    <script src="assets/plugins/d3/d3.min.js"></script>
-    <script src="assets/js/SmoothScroll.js"></script>
-    <script src="assets/js/core.min.js"></script>
+    <!--<script src="js/jquery-1.11.3.min.js"></script>-->
+    <!--<script src="assets/js/jquery-migrate-1.2.1.min.js"></script>-->
+    <!--<script src="assets/plugins/jquery-ui/js/jquery-ui-1.10.4.min.js"></script>-->
+    <!--<script src="assets/js/jquery.mmenu.min.js"></script>-->
+    <!--<script src="assets/js/bootstrap.min.js"></script>-->
+    <!--<script src="assets/js/tab.js"></script>-->
+    <!--<script src="assets/js/menu.js"></script>-->
+    <!--<script src="assets/plugins/d3/d3.min.js"></script>-->
+    <!--<script src="assets/js/SmoothScroll.js"></script>-->
+    <!--<script src="assets/js/core.min.js"></script>-->
 </head>
 <!--</head>-->
 
 <body>
-<!-- start: Header -->
+ <!--start: Header -->
 <div class="navbar" role="navigation" style="top: 0; left: 0">
 
     <div class="container-fluid">
@@ -64,26 +64,26 @@
         </ul>
     </div>
 </div>
-<!-- end: Header -->
+ <!--end: Header -->
 
 <div class="container-fluid content">
 
     <div class="row">
             <!-- start: Main Menu -->
-            <div class="sidebar ">
-            <div class="sidebar-collapse">
-                <div class="sidebar-header t-center">
+            <div class="sidebar" style="width: 18.3%;">
+            <div class="sidebar-collapse" style="width: 100%;">
+                <div class="sidebar-header t-center" style="width: 100%;">
                     <span style="text-align: center">
                         Sensor
                         <i class="fa fa-space-shuttle fa-3x blue"></i></span>
                 </div>
-                <div class="sidebar-menu">
-                    <ul class="nav nav-sidebar" id="menus" key="0">
+                <div class="sidebar-menu" style="width: 110%;">
+                    <ul class="nav nav-sidebar" id="menus" key="0" style="width: 100%;">
                         <!-- 放置菜单选项 -->
                     </ul>
                 </div>
             </div>
-            <div class="sidebar-footer">
+            <div class="sidebar-footer" style="width: 18.3%">
                 <div class="sidebar-brand">
                     南越王博物馆
                 </div>
@@ -93,13 +93,14 @@
             <!-- end: Main Menu -->
 
             <!-- start: Content -->
-            <div class="main ">
+            <div class="main" style="padding-left: 19%">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="page-header" style="float:left; width: 90%">
+                    <div class="page-header" style="float:left; width: 90%; padding-bottom: 0px; margin-bottom: 15px; margin-top: 6px;padding-left: 10px;
+">
                         <h4><i class="fa fa-retweet"></i>传感器数据</h4>
                     </div>
-                    <div class="page-header" style="float: right; width: 5%;">
+                    <div class="page-header" style="float: right; width: 5%;height: 31px;">
                         <li class="dropdown visible-md visible-lg" style="float: right;" id="alarm_note">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-bell-o" id="alarm_note_color"></i>
@@ -109,14 +110,15 @@
                 </div>
 
                 <div>
-                <ul class="nav nav-tabs" id="tab">
+                <ul class="nav nav-tabs" id="tab" style="padding-left: 10px;">
                     <!-- 放置标签头  -->
                     <li role="presentation">
                         <a href="#Sensor_tab" data-toggle="tab" id="tab_data" role="tab"></a>
                     </li>
                     <li role="presentation">
-                        <a href="#Sensor_alarm" data-toggle="tab" id="tab_alarm" role="tab"></a>
+                        <a href="#" data-toggle="tab" id="tab_alarm" role="tab"></a>
                     </li>
+                    <!--Sensor_alarm-->
                 </ul>
                 <!--id="tabs"-->
                 <div class="tab-content">
@@ -136,51 +138,16 @@
         </div>
 </div>
 
-    <!-- start: JavaScript-->
-    <!--[if !IE]>-->
-
-    <!--<script src="assets/js/jquery-2.1.1.min.js"></script>-->
-
-    <!--<![endif]-->
-
-    <!--[if IE]>
-
-    <!--<script src="assets/js/jquery-1.11.1.min.js"></script>-->
-
-    <!--<![endif]&ndash;&gt;-->
-
-    <!--[if !IE]>-->
-
-    <!--<script type="text/javascript">-->
-        <!--window.jQuery || document.write("<script src='assets/js/jquery-2.1.1.min.js'>" + "<" + "/script>");-->
-    <!--</script>-->
-
-    <!--<![endif]-->
-
-    <!--[if IE]>
-
-    <!--<script type="text/javascript">-->
-        <!--window.jQuery || document.write("<script src='assets/js/jquery-1.11.1.min.js'>" + "<" + "/script>");-->
-    <!--</script>-->
-
-    <!--<![endif]&ndash;&gt;-->
-    <!--<script src="assets/js/jquery-migrate-1.2.1.min.js"></script>-->
-    <!--<script src="assets/js/bootstrap.min.js"></script>-->
-
-
-    <!-- page scripts -->
-    <!--<script src="assets/plugins/jquery-ui/js/jquery-ui-1.10.4.min.js"></script>-->
-
-
-    <!-- theme scripts -->
-    <!--<script src="assets/js/SmoothScroll.js"></script>-->
-    <!--<script src="assets/js/jquery.mmenu.min.js"></script>-->
-    <!--<script src="assets/js/core.min.js"></script>-->
-
-    <!-- inline scripts related to this page -->
-    <!--<script src="assets/js/pages/charts-xcharts.js"></script>-->
-
-    <!-- end: JavaScript-->
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="assets/plugins/jquery-ui/js/jquery-ui-1.10.4.min.js"></script>
+<script src="assets/js/jquery.mmenu.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/tab.js"></script>
+<script src="assets/js/menu.js"></script>
+<!--<script src="assets/plugins/d3/d3.min.js"></script>-->
+<script src="assets/js/SmoothScroll.js"></script>
+<script src="assets/js/core.min.js"></script>
 
 </body>
 </html>

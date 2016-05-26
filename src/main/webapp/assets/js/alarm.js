@@ -17,8 +17,8 @@ $(document).ready(function(){
         $.trim(user_action);
         $.trim(user_name);
 
-        console.info("qing li zhi hou de user action " + user_action);
-        console.info("qing li zhi hou de user name " + user_name);
+        //console.info("qing li zhi hou de user action " + user_action);
+        //console.info("qing li zhi hou de user name " + user_name);
 
 
         if (user_action == '') {
@@ -30,12 +30,12 @@ $(document).ready(function(){
             return ;
         }
 
-        console.log("异步操作开始更新数据");
+        //console.log("异步操作开始更新数据");
 
-        console.log("acknowledged 之前的 log id" + alarm_id);
+        //console.log("acknowledged 之前的 log id" + alarm_id);
 
         if (alarm_id == undefined){
-            console.log("alarm_id 的值为空");
+            //console.log("alarm_id 的值为空");
             return ;
         }
 
@@ -45,16 +45,16 @@ $(document).ready(function(){
             data: "sensorno=" + sensorno + "&userAction=" + user_action + "&userName=" + user_name +
                         "&logId=" + alarm_id,
             success:function(res){
-                console.log("成功执行异步      ");
+                //console.log("成功执行异步      ");
                 var re = eval("(" + res + ")");
-                console.log(re);
+                //console.log(re);
 
                 if(re == undefined)
                     return ;
 
                  var isok = re.clearResult;
 
-                console.log(isok);
+                //console.log(isok);
                 if(!isok || isok == "false"){
                     //失败清理之后的显示信息
                     alert("操作失败");
@@ -65,37 +65,25 @@ $(document).ready(function(){
                 //成功清理之后应该将页面清除
                 $("#tab_alarm").html('');
                 $("#Sensor_alarm").html('');
+                //tianjia
+                $("#tab_alarm").attr("href","#");
 
-                //$("#tab_alarm").html("");
-                //$("#tab_alarm").remove();
-                //$("#tab_alarm")
-                //$("#Sensor_alarm").html("");
-                //$("#Sensor_alarm").remove();
-                //$("#Sensor_tab").attr("class","active");
                 $("#" + $("#menus").attr("key")).attr("alarming" , false);
                 $("#alarm_note_color").attr("style","color: rgb(132,135,136)");
                 $("#" + $("#menus").attr("key") + " " + "span").attr("style","color: rgb(132,135,136)");
-                console.info("qing li wan cheng le color black");
 
-                //页面跳转
-                //$("#tab_data").css("display","block");
-                //$('#tab_data').tab('show');
-                //$("#Sensor_tab").attr("class","active");
+                //console.info("qing li wan cheng le color black");
 
                 //模拟点击事件
                 $("#tab_data").trigger("click");
 
-
-                console.log("tab");
-                //$("#tab_data").tab();
+                //console.log("tab");
 
                 alarm_id = undefined;
-
                 return ;
-
             },
             error:function(e){
-                console.log("执行异步失败      ");
+                console.log("网络异常，操作失败，请稍后再试！");
             }
         });
     });
